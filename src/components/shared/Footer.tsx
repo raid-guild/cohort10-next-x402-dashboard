@@ -8,8 +8,8 @@ export default function Footer() {
           <p className="text-body-sm text-muted-foreground">
             Raid Guild Brand Guidelines
           </p>
-          <Link 
-            href="https://github.com/raidguild" 
+          <Link
+            href="https://github.com/raid-guild/brand"
             className="text-body-sm text-primary hover:text-primary/80 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
