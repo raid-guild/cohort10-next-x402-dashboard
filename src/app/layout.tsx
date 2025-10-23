@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { maziusDisplay, ebGaramond, ubuntuMono } from "@/lib/fonts";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${maziusDisplay.variable} ${ebGaramond.variable} ${ubuntuMono.variable} antialiased`}
+        className={`${maziusDisplay.variable} ${ebGaramond.variable} ${ubuntuMono.variable} dark antialiased`}
       >
-        {children}
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );
