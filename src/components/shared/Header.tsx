@@ -36,6 +36,7 @@ type NavItemWithAnchor = { label: string; anchor: string; href?: undefined };
 type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
+  { label: "Home", href: "/" },
   { label: "Brand", href: "/brand" },
   { label: "UI", href: "/ui" },
 ];
@@ -49,7 +50,7 @@ const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
     navActive: "bg-moloch-800",
     navActiveText: "text-scroll-100",
     menuSurface: "bg-moloch-500",
-    logoPath: "/assets/logos/logo-RG-moloch-800.svg",
+    logoPath: "/assets/logos/full-m800.svg",
   },
   "moloch-800": {
     background: "bg-moloch-800",
@@ -59,7 +60,7 @@ const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
     navActive: "bg-moloch-500",
     navActiveText: "text-scroll-100",
     menuSurface: "bg-moloch-800/95",
-    logoPath: "/assets/logos/logo-RG-moloch-500.svg",
+    logoPath: "/assets/logos/full-m800.svg",
   },
   "scroll-700": {
     background: "bg-scroll-700",
@@ -69,7 +70,7 @@ const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
     navActive: "bg-moloch-800",
     navActiveText: "text-scroll-100",
     menuSurface: "bg-scroll-700",
-    logoPath: "/assets/logos/logo-RG-scroll-100.svg",
+    logoPath: "/assets/logos/full-m800.svg",
   },
 };
 
