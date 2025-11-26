@@ -36,9 +36,8 @@ type NavItemWithAnchor = { label: string; anchor: string; href?: undefined };
 type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Brand", href: "/brand" },
-  { label: "UI", href: "/ui" },
+  { label: "Brand", href: "/" },
+  { label: "RaidGuild.org", href: "https://www.raidguild.org/" },
 ];
 
 const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
