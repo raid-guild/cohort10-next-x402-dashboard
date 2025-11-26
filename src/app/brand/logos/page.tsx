@@ -9,7 +9,8 @@ export default function LogosPage() {
           <h1 className="text-display-lg mb-6">Logos</h1>
           <p className="text-lg mb-8 text-foreground/80">
             The logo is the primary identifier for our brand. It is comprised of
-            two elements, the crossed sword logomark and the Raid Guild logotype.
+            two elements, the crossed sword logomark and the Raid Guild
+            logotype.
           </p>
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mb-12">
             <p className="text-base mb-3 font-medium">
@@ -43,8 +44,8 @@ export default function LogosPage() {
           <section>
             <h2 className="text-heading-lg mb-6">Logotype</h2>
             <p className="text-base mb-6 text-foreground/70">
-              The full logotype combines the logomark with the "Raid Guild"
-              wordmark.
+              The full logotype combines the logomark with the &quot;Raid
+              Guild&quot; wordmark.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="rounded-lg overflow-hidden border border-border">

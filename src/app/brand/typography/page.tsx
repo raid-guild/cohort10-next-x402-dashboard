@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function TypographyPage() {
   return (
     <div className="container-custom py-16">
@@ -18,7 +20,12 @@ export default function TypographyPage() {
                   <div className="text-display-sm">Display Small</div>
                 </div>
                 <p className="text-body-base text-muted-foreground mt-4">
-                  Primary display font for headings and large text
+                  Mazius Display is the display typeface. It is a high-contrast
+                  serif font with a calligraphic feel, influenced by latin
+                  chancery hands. The bold weight is preferred for headlines to
+                  editorialize layouts. The two italic weights can be combined
+                  to increase expressiveness. Use for headlines and brand
+                  graphics.
                 </p>
               </div>
 
@@ -32,7 +39,10 @@ export default function TypographyPage() {
                   <div className="text-body-sm font-body">Body Small</div>
                 </div>
                 <p className="text-body-base text-muted-foreground mt-4">
-                  Secondary body font for readable content
+                  EB Garamond is the secondary typeface, used for body and
+                  supporting copy in communications. This typeface is also used
+                  heavily in UI components in the design system. Garamond was
+                  chosen because of its high readability.
                 </p>
               </div>
 
@@ -106,6 +116,93 @@ export default function TypographyPage() {
                 <p className="text-body-sm text-muted-foreground">
                   Line height: 160% | Letter spacing: 0%
                 </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-heading-lg mb-6">Developers</h2>
+            <div className="space-y-6">
+              <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mb-12">
+                <p className="text-base mb-3 font-medium">
+                  {" "}
+                  Download font files:
+                </p>
+                <Link
+                  href="https://github.com/raid-guild/brand/tree/main/public/fonts"
+                  className="text-lg text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-2 font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </Link>
+              </div>
+
+              <div>
+                <h3 className="text-heading-md mb-4">Typography Classes</h3>
+                <p className="text-body-base mb-4">
+                  Available className utilities from globals.css:
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-display-lg
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-display-md
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-display-sm
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-heading-lg
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-heading-md
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-heading-sm
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-body-lg
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-body-md
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-body-sm
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-label
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-label-md
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-label-sm
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-code-lg
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-code-md
+                  </code>
+                  <code className="text-code-md p-2 bg-muted rounded">
+                    text-code-sm
+                  </code>
+                </div>
               </div>
             </div>
           </section>
