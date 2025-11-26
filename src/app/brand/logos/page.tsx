@@ -4,94 +4,93 @@ import Link from "next/link";
 export default function LogosPage() {
   return (
     <div className="container-custom py-16">
-      <div className="max-w-4xl mx-auto ">
-        <div className="flex flex-wrap justify-between items-baseline">
-          <h1 className="text-display-lg mb-8">Logos</h1>
-          <div className="mb-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-12">
+          <h1 className="text-display-lg mb-6">Logos</h1>
+          <p className="text-lg mb-8 text-foreground/80">
+            The logo is the primary identifier for our brand. It is comprised of
+            two elements, the crossed sword logomark and the Raid Guild logotype.
+          </p>
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 mb-12">
+            <p className="text-base mb-3 font-medium">
+              Download all logo files:
+            </p>
             <Link
               href="https://github.com/raid-guild/brand/tree/main/public/assets/logos"
-              className="text-lg text-primary hover:text-primary/80 transition-colors "
+              className="text-lg text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-2 font-medium"
               target="_blank"
               rel="noopener noreferrer"
             >
-              on GitHub
+              View on GitHub
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
             </Link>
           </div>
         </div>
 
         <div className="space-y-16">
           <section>
-            <h2 className="text-heading-lg mb-6">Primary Logo</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Logo on Moloch 400 background */}
-              <div className="bg-moloch-400 p-8 rounded-lg flex items-center justify-center">
+            <h2 className="text-heading-lg mb-6">Logotype</h2>
+            <p className="text-base mb-6 text-foreground/70">
+              The full logotype combines the logomark with the "Raid Guild"
+              wordmark.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-lg overflow-hidden border border-border">
                 <Image
-                  src="/assets/logos/Logotype.svg"
-                  alt="Raid Guild Logo"
-                  width={200}
-                  height={76}
-                  className="h-16 w-auto"
+                  src="/assets/logos/full-m500-m800.svg"
+                  alt="Raid Guild Logotype on Moloch 500 background"
+                  width={598}
+                  height={335}
+                  className="w-full h-auto"
                 />
               </div>
-
-              {/* Logo on Moloch 800 background */}
-              <div className="bg-moloch-800 p-8 rounded-lg flex items-center justify-center">
+              <div className="rounded-lg overflow-hidden border border-border">
                 <Image
-                  src="/assets/logos/Logotype_moloch.svg"
-                  alt="Raid Guild Logo"
-                  width={200}
-                  height={76}
-                  className="h-16 w-auto"
-                />
-              </div>
-
-              {/* Logo on Scroll 100 background */}
-              <div className="bg-scroll-100 p-8 rounded-lg flex items-center justify-center border border-border">
-                <Image
-                  src="/assets/logos/Logotype_moloch.svg"
-                  alt="Raid Guild Logo"
-                  width={200}
-                  height={76}
-                  className="h-16 w-auto"
+                  src="/assets/logos/full-s100-s700.svg"
+                  alt="Raid Guild Logotype on Scroll 100 background"
+                  width={598}
+                  height={335}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className="text-heading-lg mb-6">Logo Mark</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Logomark on Moloch 400 background */}
-              <div className="bg-[#D25C41] p-8 rounded-lg flex items-center justify-center">
+            <h2 className="text-heading-lg mb-6">Logomark</h2>
+            <p className="text-base mb-6 text-foreground/70">
+              The crossed sword logomark can be used independently when space is
+              limited or when the full logotype is not appropriate.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="rounded-lg overflow-hidden border border-border">
                 <Image
-                  src="/assets/logos/Logomark.svg"
-                  alt="Raid Guild Logomark"
-                  width={120}
-                  height={120}
-                  className="h-20 w-auto"
+                  src="/assets/logos/symbol-m500.svg"
+                  alt="Raid Guild Logomark on Moloch 500 background"
+                  width={112}
+                  height={105}
+                  className="w-full h-auto max-w-xs mx-auto"
                 />
               </div>
-
-              {/* Logomark on Moloch 800 background */}
-              <div className="bg-moloch-800 p-8 rounded-lg flex items-center justify-center">
+              <div className="rounded-lg overflow-hidden border border-border">
                 <Image
-                  src="/assets/logos/Logomark_moloch.svg"
-                  alt="Raid Guild Logomark"
-                  width={120}
-                  height={120}
-                  className="h-20 w-auto"
-                />
-              </div>
-
-              {/* Logomark on Scroll 100 background */}
-              <div className="bg-scroll-100 p-8 rounded-lg flex items-center justify-center border border-border">
-                <Image
-                  src="/assets/logos/Logomark.svg"
-                  alt="Raid Guild Logomark"
-                  width={120}
-                  height={120}
-                  className="h-20 w-auto"
+                  src="/assets/logos/symbol-m800-s100.svg"
+                  alt="Raid Guild Logomark on Moloch 800 background"
+                  width={300}
+                  height={300}
+                  className="w-full h-auto max-w-xs mx-auto"
                 />
               </div>
             </div>

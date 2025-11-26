@@ -31,9 +31,7 @@ export default function BrandPage() {
       <div className="max-w-6xl mx-auto">
         {/* Brand Pages */}
         <section className="mb-16">
-          <h2 className="text-heading-lg text-moloch-500 mb-6">
-            Brand Assets
-          </h2>
+          <h2 className="text-heading-lg text-moloch-500 mb-6">Brand Assets</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               href="/brand/logos"
