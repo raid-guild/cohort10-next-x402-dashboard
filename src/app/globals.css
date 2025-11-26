@@ -220,7 +220,7 @@
 
 @layer utilities {
   /* Typography Classes */
-  .text-display-lg {
+  .type-display-lg {
     font-size: var(--font-size-display-lg);
     line-height: var(--line-height-display-lg);
     letter-spacing: var(--letter-spacing-display-lg);
@@ -229,7 +229,7 @@
     /* mb-12 */
   }
 
-  .text-display-md {
+  .type-display-md {
     font-size: var(--font-size-display-md);
     line-height: var(--line-height-display-md);
     letter-spacing: var(--letter-spacing-display-md);
@@ -238,7 +238,7 @@
     /* mb-10 */
   }
 
-  .text-display-sm {
+  .type-display-sm {
     font-size: var(--font-size-display-sm);
     line-height: var(--line-height-display-sm);
     letter-spacing: var(--letter-spacing-display-sm);
@@ -247,7 +247,7 @@
     /* mb-9 */
   }
 
-  .text-heading-lg {
+  .type-heading-lg {
     font-size: var(--font-size-heading-lg);
     line-height: var(--line-height-heading-lg);
     letter-spacing: var(--letter-spacing-heading-lg);
@@ -256,7 +256,7 @@
     /* mb-8 */
   }
 
-  .text-heading-md {
+  .type-heading-md {
     font-size: var(--font-size-heading-md);
     line-height: var(--line-height-heading-md);
     letter-spacing: var(--letter-spacing-heading-md);
@@ -265,7 +265,7 @@
     /* mb-7 */
   }
 
-  .text-heading-sm {
+  .type-heading-sm {
     font-size: var(--font-size-heading-sm);
     line-height: var(--line-height-heading-sm);
     letter-spacing: var(--letter-spacing-heading-sm);
@@ -274,7 +274,7 @@
     /* mb-6 */
   }
 
-  .text-body-lg {
+  .type-body-lg {
     font-size: var(--font-size-body-lg);
     line-height: var(--line-height-body-lg);
     letter-spacing: var(--letter-spacing-body-lg);
@@ -283,7 +283,7 @@
     /* mb-5 */
   }
 
-  .text-body-md {
+  .type-body-md {
     font-size: var(--font-size-body-base);
     line-height: var(--line-height-body-base);
     letter-spacing: var(--letter-spacing-body-base);
@@ -292,7 +292,7 @@
     /* mb-4 */
   }
 
-  .text-body-sm {
+  .type-body-sm {
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-body-sm);
     letter-spacing: var(--letter-spacing-body-sm);
@@ -301,7 +301,7 @@
     /* mb-4 */
   }
 
-  .text-label {
+  .type-label {
     font-size: var(--font-size-body-lg);
     line-height: var(--line-height-label-lg);
     letter-spacing: var(--letter-spacing-label-lg);
@@ -311,7 +311,7 @@
     /* mb-6 */
   }
 
-  .text-label-md {
+  .type-label-md {
     font-size: var(--font-size-body-base);
     line-height: var(--line-height-label-md);
     letter-spacing: var(--letter-spacing-label-md);
@@ -321,7 +321,7 @@
     /* mb-4 */
   }
 
-  .text-label-sm {
+  .type-label-sm {
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-label-sm);
     letter-spacing: var(--letter-spacing-label-sm);
@@ -331,7 +331,7 @@
     /* mb-4 */
   }
 
-  .text-code-lg {
+  .type-code-lg {
     font-size: var(--font-size-body-lg);
     line-height: var(--line-height-code-lg);
     letter-spacing: var(--letter-spacing-code-lg);
@@ -340,7 +340,7 @@
     /* mb-4 */
   }
 
-  .text-code-md {
+  .type-code-md {
     font-size: var(--font-size-body-base);
     line-height: var(--line-height-code-md);
     letter-spacing: var(--letter-spacing-code-md);
@@ -349,7 +349,7 @@
     /* mb-4 */
   }
 
-  .text-code-sm {
+  .type-code-sm {
     font-size: var(--font-size-body-sm);
     line-height: var(--line-height-code-sm);
     letter-spacing: var(--letter-spacing-code-sm);

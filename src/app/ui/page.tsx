@@ -1,140 +1,199 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { SwitchExample } from "@/components/examples/SwitchExample";
+import { ButtonExample } from "@/components/examples/ButtonExample";
 
 export default function UIPage() {
+  const [activeTab, setActiveTab] = useState<"getting-started" | "examples">(
+    "getting-started"
+  );
+
   return (
     <div className="container-custom py-16">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-display-lg mb-8">UI Components</h1>
+        <h1 className="type-display-lg mb-8">UI Components</h1>
 
-        <div className="mb-8">
+        {/* Intro Section */}
+        <section className="mb-8">
+          <h2 className="type-heading-lg mb-4">Component Stack</h2>
+          <p className="type-body-lg text-muted-foreground mb-4">
+            The RaidGuild UI component library is built with{" "}
+            <strong className="text-foreground">Tailwind CSS</strong> and{" "}
+            <strong className="text-foreground">shadcn/ui</strong>, providing a
+            comprehensive set of accessible, customizable components. This
+            example demonstrates the components set up in a{" "}
+            <strong className="text-foreground">Next.js</strong> application,
+            showcasing how to integrate the RaidGuild brand guidelines into your
+            project.
+          </p>
+        </section>
+
+        {/* GitHub Link */}
+        <div className="mb-8 p-4 border border-border rounded-lg bg-muted/30">
+          <h2 className="type-heading-md mb-4">Source Code</h2>
+          <p className="text-body-base text-muted-foreground mb-4">
+            The complete component library, installation instructions, and brand
+            guidelines are available on GitHub.
+          </p>
           <Link
-            href="https://github.com/raid-guild/brand/blob/main/README.md"
-            className="text-lg text-primary hover:text-primary/80 transition-colors "
+            href="https://github.com/raid-guild/brand"
+            className="inline-flex items-center text-lg text-primary hover:text-primary/80 transition-colors font-medium"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Component installation instruction on GitHub
+            View on GitHub →
           </Link>
         </div>
 
-        <div className="space-y-16">
-          <section>
-            <h2 className="text-heading-lg mb-6">Buttons</h2>
-            <div className="space-y-6">
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-4">Primary Button</h3>
-                <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors">
-                  Primary Action
-                </button>
-              </div>
-
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-4">Secondary Button</h3>
-                <button className="bg-secondary text-secondary-foreground px-6 py-3 rounded-lg hover:bg-secondary/90 transition-colors">
-                  Secondary Action
-                </button>
-              </div>
-
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-4">Outline Button</h3>
-                <button className="border border-border px-6 py-3 rounded-lg hover:bg-muted/50 transition-colors">
-                  Outline Action
-                </button>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-heading-lg mb-6">Cards</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-2">Basic Card</h3>
-                <p className="text-body-base text-muted-foreground">
-                  Simple card component with border and padding
-                </p>
-              </div>
-
-              <div className="p-6 border border-border rounded-lg bg-muted/50">
-                <h3 className="text-heading-md mb-2">Highlighted Card</h3>
-                <p className="text-body-base text-muted-foreground">
-                  Card with background color for emphasis
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-heading-lg mb-6">Form Elements</h2>
-            <div className="space-y-6">
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-4">Input Fields</h3>
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Enter text here"
-                    className="w-full px-4 py-2 border border-input rounded-lg bg-background"
-                  />
-                  <textarea
-                    placeholder="Enter longer text here"
-                    className="w-full px-4 py-2 border border-input rounded-lg bg-background h-24"
-                  />
-                </div>
-              </div>
-
-              <div className="p-6 border border-border rounded-lg">
-                <h3 className="text-heading-md mb-4">Checkboxes and Radio</h3>
-                <div className="space-y-4">
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" className="rounded" />
-                    <span className="text-body-base">Checkbox option</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input type="radio" name="radio" className="rounded-full" />
-                    <span className="text-body-base">Radio option</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-heading-lg mb-6">Navigation</h2>
-            <div className="p-6 border border-border rounded-lg">
-              <nav className="flex space-x-6">
-                <a
-                  href="#"
-                  className="text-body-base hover:text-primary transition-colors"
-                >
-                  Home
-                </a>
-                <a
-                  href="#"
-                  className="text-body-base hover:text-primary transition-colors"
-                >
-                  Logos
-                </a>
-                <a
-                  href="#"
-                  className="text-body-base hover:text-primary transition-colors"
-                >
-                  Colors
-                </a>
-                <a
-                  href="#"
-                  className="text-body-base hover:text-primary transition-colors"
-                >
-                  Typography
-                </a>
-                <a
-                  href="#"
-                  className="text-body-base hover:text-primary transition-colors"
-                >
-                  UI
-                </a>
-              </nav>
-            </div>
-          </section>
+        {/* Tab Navigation */}
+        <div className="mb-8 flex gap-2 border-b border-border">
+          <button
+            onClick={() => setActiveTab("getting-started")}
+            className={`px-6 py-3 type-body-lg transition-colors border-b-2 ${
+              activeTab === "getting-started"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Getting Started
+          </button>
+          <button
+            onClick={() => setActiveTab("examples")}
+            className={`px-6 py-3 type-body-lg transition-colors border-b-2 ${
+              activeTab === "examples"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Component Examples
+          </button>
         </div>
+
+        {/* Tab Content */}
+        {activeTab === "getting-started" && (
+          <section>
+            <h2 className="type-heading-lg mb-6">Getting Started</h2>
+            <div className="space-y-6">
+              <div className="p-6 border border-border rounded-lg">
+                <h3 className="type-heading-md mb-4">
+                  1. Install Required Dependencies
+                </h3>
+                <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+                  <code>{`# Core dependencies
+npm install class-variance-authority clsx lucide-react tailwind-merge
+
+# Development dependencies
+npm install -D @tailwindcss/postcss tw-animate-css`}</code>
+                </pre>
+              </div>
+
+              <div className="p-6 border border-border rounded-lg">
+                <h3 className="type-heading-md mb-4">2. Add Font Files</h3>
+                <p className="text-body-base text-muted-foreground mb-3">
+                  Create a{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    public/fonts/
+                  </code>{" "}
+                  directory and add the RaidGuild brand fonts:
+                </p>
+                <ul className="list-disc list-inside text-body-base text-muted-foreground space-y-1 mb-3">
+                  <li>MAZIUSREVIEW20.09-Regular.otf</li>
+                  <li>MAZIUSREVIEW20.09-Regular.woff</li>
+                  <li>EBGaramond-VariableFont_wght.ttf</li>
+                  <li>EBGaramond-Italic-VariableFont_wght.ttf</li>
+                </ul>
+                <p className="text-body-base text-muted-foreground">
+                  Copy{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    src/lib/fonts.ts
+                  </code>{" "}
+                  into your project and update your{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    src/app/layout.tsx
+                  </code>{" "}
+                  to include the fonts.
+                </p>
+              </div>
+
+              <div className="p-6 border border-border rounded-lg">
+                <h3 className="type-heading-md mb-4">3. Update Global CSS</h3>
+                <p className="text-body-base text-muted-foreground">
+                  Replace your{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    src/app/globals.css
+                  </code>{" "}
+                  with the RaidGuild brand styles from the globals.css file in
+                  this repo.
+                </p>
+              </div>
+
+              <div className="p-6 border border-border rounded-lg">
+                <h3 className="type-heading-md mb-4">4. Add Components</h3>
+                <p className="text-body-base text-muted-foreground mb-3">
+                  Copy component files from{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    src/components/ui/
+                  </code>{" "}
+                  into your project. Components are built with Radix UI
+                  primitives and styled with Tailwind CSS.
+                </p>
+                <p className="text-body-base text-muted-foreground mb-3">
+                  <strong className="text-foreground">Note:</strong> You&apos;ll
+                  need to install the corresponding Radix UI packages for each
+                  component you use. For example, if you&apos;re using the
+                  Switch component, install{" "}
+                  <code className="bg-muted px-1.5 py-0.5 rounded text-sm">
+                    @radix-ui/react-switch
+                  </code>
+                  . Check each component&apos;s imports to see which Radix
+                  packages are required.
+                </p>
+                <p className="text-body-base text-muted-foreground">
+                  For detailed installation instructions and examples, see the{" "}
+                  <Link
+                    href="https://github.com/raid-guild/brand/blob/main/README.md"
+                    className="text-primary hover:text-primary/80 transition-colors underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    README on GitHub
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {activeTab === "examples" && (
+          <div className="space-y-16">
+            <section id="examples-top" className="mb-8">
+              <h2 className="type-heading-lg mb-6">Component Examples</h2>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#button"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Button
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#switch"
+                    className="text-body-base text-primary hover:text-primary/80 transition-colors underline"
+                  >
+                    Switch
+                  </a>
+                </li>
+              </ul>
+            </section>
+            <ButtonExample />
+            <SwitchExample />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -347,7 +347,7 @@ function MobileMenuPanel({
     >
       <div
         className={[
-          "px-4 py-6 w-full max-w-[16rem] origin-top overflow-hidden rounded-b-md text-display-md transition-all duration-300 motion-reduce:transition-none",
+          "px-4 py-6 w-full max-w-[16rem] origin-top overflow-hidden rounded-b-md type-display-md transition-all duration-300 motion-reduce:transition-none",
           theme.menuSurface,
           isOpen
             ? "mt-2 scale-y-100 opacity-100"

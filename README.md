@@ -10,7 +10,7 @@ This guide will help you integrate the RaidGuild brand guidelines into a new Nex
 
 ```bash
 # Core dependencies
-npm install @radix-ui/react-switch class-variance-authority clsx lucide-react tailwind-merge
+npm install class-variance-authority clsx lucide-react tailwind-merge
 
 # Development dependencies
 npm install -D @tailwindcss/postcss tw-animate-css

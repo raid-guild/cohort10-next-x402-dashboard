@@ -6,7 +6,7 @@ export default function LogosPage() {
     <div className="container-custom py-16">
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-display-lg mb-6">Logos</h1>
+          <h1 className="type-display-lg mb-6">Logos</h1>
           <p className="text-lg mb-8 text-foreground/80">
             The logo is the primary identifier for our brand. It is comprised of
             two elements, the crossed sword logomark and the Raid Guild
@@ -42,7 +42,7 @@ export default function LogosPage() {
 
         <div className="space-y-16">
           <section>
-            <h2 className="text-heading-lg mb-6">Logotype</h2>
+            <h2 className="type-heading-lg mb-6">Logotype</h2>
             <p className="text-base mb-6 text-foreground/70">
               The full logotype combines the logomark with the &quot;Raid
               Guild&quot; wordmark.
@@ -70,7 +70,7 @@ export default function LogosPage() {
           </section>
 
           <section>
-            <h2 className="text-heading-lg mb-6">Logomark</h2>
+            <h2 className="type-heading-lg mb-6">Logomark</h2>
             <p className="text-base mb-6 text-foreground/70">
               The crossed sword logomark can be used independently when space is
               limited or when the full logotype is not appropriate.

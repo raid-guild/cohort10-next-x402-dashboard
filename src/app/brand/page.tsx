@@ -8,8 +8,8 @@ export default function BrandPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center">
         {/* Left Column - Text Content */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-display-lg md:text-display-md mb-4">Brand</h1>
-          <p className="text-body-lg text-moloch-800">
+          <h1 className="type-display-lg md:type-display-md mb-4">Brand</h1>
+          <p className="type-body-lg text-moloch-800">
             Explore the Raid Guild brand identity. Find logos, colors, and
             typography that define our visual language and help you create
             consistent, on-brand designs.
@@ -31,16 +31,16 @@ export default function BrandPage() {
       <div className="max-w-6xl mx-auto">
         {/* Brand Pages */}
         <section className="mb-16">
-          <h2 className="text-heading-lg text-moloch-500 mb-6">Brand Assets</h2>
+          <h2 className="type-heading-lg text-moloch-500 mb-6">Brand Assets</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               href="/brand/logos"
               className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
             >
-              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+              <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
                 Logos
               </h3>
-              <p className="text-body-sm text-muted-foreground">
+              <p className="type-body-sm text-muted-foreground">
                 Primary logos, logomarks, and variations in multiple formats
               </p>
             </Link>
@@ -49,10 +49,10 @@ export default function BrandPage() {
               href="/brand/colors"
               className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
             >
-              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+              <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
                 Colors
               </h3>
-              <p className="text-body-sm text-muted-foreground">
+              <p className="type-body-sm text-muted-foreground">
                 Complete color palette with Moloch and Scroll color scales
               </p>
             </Link>
@@ -61,10 +61,10 @@ export default function BrandPage() {
               href="/brand/typography"
               className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
             >
-              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+              <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
                 Typography
               </h3>
-              <p className="text-body-sm text-muted-foreground">
+              <p className="type-body-sm text-muted-foreground">
                 Font families, styles, and typography scale
               </p>
             </Link>

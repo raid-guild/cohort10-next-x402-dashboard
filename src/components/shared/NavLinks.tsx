@@ -41,7 +41,7 @@ export default function HeaderNavLinks({
         const isActive =
           Boolean(activeAnchorId) && anchorId === activeAnchorId ? true : false;
         const classes = [
-          "text-label-md rounded-md px-8 py-1 text-center transition-colors duration-200 motion-reduce:transition-none",
+          "type-label-md rounded-md px-8 py-1 text-center transition-colors duration-200 motion-reduce:transition-none",
           theme.navHover,
           isActive ? theme.navActive : "",
           isActive ? theme.navActiveText : "",
