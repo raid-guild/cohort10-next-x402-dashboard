@@ -59,7 +59,9 @@ export function AccordionExample() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
-              <AccordionTrigger>What services does RaidGuild offer?</AccordionTrigger>
+              <AccordionTrigger>
+                What services does RaidGuild offer?
+              </AccordionTrigger>
               <AccordionContent>
                 RaidGuild offers a range of services including smart contract
                 development, frontend development, design, marketing, and
@@ -76,7 +78,8 @@ export function AccordionExample() {
               <AccordionTrigger>First Item</AccordionTrigger>
               <AccordionContent>
                 This is the content of the first accordion item. Multiple items
-                can be open at the same time when using type="multiple".
+                can be open at the same time when using
+                type=&quot;multiple&quot;.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2">
@@ -99,4 +102,3 @@ export function AccordionExample() {
     </section>
   );
 }
-
