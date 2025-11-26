@@ -36,6 +36,7 @@ type NavItemWithAnchor = { label: string; anchor: string; href?: undefined };
 type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
+  { label: "Home", href: "/" },
   { label: "Brand", href: "/brand" },
   { label: "UI", href: "/ui" },
 ];

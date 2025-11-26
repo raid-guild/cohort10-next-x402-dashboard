@@ -1,79 +1,77 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default function BrandPage() {
   return (
-    <div className="container-custom py-16">
-      <div className="mx-auto">
-        <h1 className="text-display-sm mb-8">Raid Guild Brand Guidelines</h1>
-        <h2 className="text-display-lg mb-8">Brand</h2>
-
-        <p className="text-body-lg text-moloch-800">
-          What is here, how to use it
-        </p>
-
-        <div className="flex flex-col w-full gap-10 mt-10">
-          <div className="p-4">
-            <h2 className="text-heading-lg text-moloch-500 mb-8">Resources</h2>
-
-            <div className="space-y-4 text-body-lg">
-              <Link
-                href="/assets/RaidGuild_brand_guidelines.pdf"
-                className="block hover:text-accent transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3 className="text-heading-sm">Brand Guidelines (PDF)</h3>
-              </Link>
-
-              <Link
-                href="https://www.figma.com/proto/EuaqswLG9HfWWPbgNOdbSO/Raid-Guild-%7C-Brand-Refresh-%7C-Q4-2024?node-id=1859-175&t=0RNzFwba5kAxTnCR-1"
-                className="block hover:text-accent transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3 className="text-heading-sm">Brand Guidelines (Figma)</h3>
-              </Link>
-
-              <Link
-                href="https://github.com/raid-guild/brand"
-                className="block hover:text-accent transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <h3 className="text-heading-sm">GitHub Repository</h3>
-              </Link>
-            </div>
-          </div>
-
-          <div className="p-4">
-            <div className="space-y-6">
-              <h2 className="text-heading-lg text-moloch-500 mb-8">Brand</h2>
-
-              <div className="space-y-4">
-                <Link
-                  href="/brand/logos"
-                  className="block hover:text-accent transition-colors"
-                >
-                  <h3 className="text-heading-sm">Logos</h3>
-                </Link>
-
-                <Link
-                  href="/brand/colors"
-                  className="block hover:text-accent transition-colors"
-                >
-                  <h3 className="text-heading-sm">Colors</h3>
-                </Link>
-
-                <Link
-                  href="/brand/typography"
-                  className="block hover:text-accent transition-colors"
-                >
-                  <h3 className="text-heading-sm">Typography</h3>
-                </Link>
-              </div>
-            </div>
-          </div>
+    <div className="container-custom">
+      {/* Hero Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 items-center">
+        {/* Left Column - Text Content */}
+        <div className="flex flex-col justify-center">
+          <h1 className="text-display-lg md:text-display-md mb-4">Brand</h1>
+          <p className="text-body-lg text-moloch-800">
+            Explore the Raid Guild brand identity. Find logos, colors, and
+            typography that define our visual language and help you create
+            consistent, on-brand designs.
+          </p>
         </div>
+
+        {/* Right Column - Image */}
+        <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+          <Image
+            src="/assets/webp/1080x1440/tree-island-c.webp"
+            alt="Raid Guild Brand Artwork"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto">
+        {/* Brand Pages */}
+        <section className="mb-16">
+          <h2 className="text-heading-lg text-moloch-500 mb-6">
+            Brand Assets
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link
+              href="/brand/logos"
+              className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
+            >
+              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+                Logos
+              </h3>
+              <p className="text-body-sm text-muted-foreground">
+                Primary logos, logomarks, and variations in multiple formats
+              </p>
+            </Link>
+
+            <Link
+              href="/brand/colors"
+              className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
+            >
+              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+                Colors
+              </h3>
+              <p className="text-body-sm text-muted-foreground">
+                Complete color palette with Moloch and Scroll color scales
+              </p>
+            </Link>
+
+            <Link
+              href="/brand/typography"
+              className="p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
+            >
+              <h3 className="text-heading-sm mb-2 group-hover:text-primary transition-colors">
+                Typography
+              </h3>
+              <p className="text-body-sm text-muted-foreground">
+                Font families, styles, and typography scale
+              </p>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );
