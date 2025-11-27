@@ -149,3 +149,51 @@ Use with Tailwind classes like `bg-moloch-400`, `text-scroll-600`, etc.
 ### 6. Grid System
 
 Use `.container-custom` for consistent max-width and padding, and `.grid-custom` for responsive grid layouts that adapt from 4 columns (mobile) to 12 columns (desktop).
+
+### 7. UI Components Catalog
+
+A comprehensive catalog of all available UI components is available in `docs/ui-components.md`. This document is **essential** when working with LLM developer agents.
+
+#### For LLM Developer Agents
+
+**Always include the UI Components Catalog in your prompt context** when working with LLM agents (Cursor, GitHub Copilot, ChatGPT, etc.). This ensures the agent:
+
+- Knows what components are available
+- Uses existing components instead of creating custom alternatives
+- Follows design system patterns
+- Uses correct imports and props
+
+#### Example Prompt Template
+
+```
+I need to build a [feature description].
+
+Please use components from the UI Components Catalog (docs/ui-components.md). 
+Always prefer existing components over creating custom ones.
+
+Requirements:
+- [Requirement 1]
+- [Requirement 2]
+
+Make sure to:
+- Import from @/components/ui/[component-name]
+- Follow design system patterns
+- Use correct variants and props
+```
+
+#### What's in the Catalog
+
+The catalog includes:
+- Complete list of all 42+ UI components
+- Detailed descriptions and use cases
+- Import paths and exports
+- Component variants and props
+- Design tokens (colors, typography, spacing)
+- Common component combinations
+- Code examples and patterns
+- Quick reference guide
+- Accessibility guidelines
+
+**Location:** `docs/ui-components.md`
+
+**When to use:** Always reference this document when building UI features or working with LLM agents.

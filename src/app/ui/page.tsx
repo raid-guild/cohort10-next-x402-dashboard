@@ -283,6 +283,82 @@ npm install -D @tailwindcss/postcss tw-animate-css`}</code>
                   .
                 </p>
               </div>
+
+              <div className="p-6 border border-border rounded-lg bg-primary/5">
+                <h3 className="type-heading-md mb-4">
+                  5. Using with LLM Developer Agents
+                </h3>
+                <p className="text-body-base text-muted-foreground mb-4">
+                  When working with LLM developer agents (Cursor, GitHub Copilot,
+                  ChatGPT, etc.), always include the{" "}
+                  <strong className="text-foreground">
+                    UI Components Catalog
+                  </strong>{" "}
+                  in your prompt context. This ensures the agent knows what
+                  components are available and will use them instead of creating
+                  custom alternatives.
+                </p>
+                <div className="space-y-3 mb-4">
+                  <div>
+                    <h4 className="type-body-lg font-semibold mb-2">
+                      📄 Component Catalog Location
+                    </h4>
+                    <p className="text-body-base text-muted-foreground mb-2">
+                      The complete catalog is available at:
+                    </p>
+                    <code className="block bg-muted p-3 rounded-lg text-sm">
+                      docs/ui-components.md
+                    </code>
+                  </div>
+                  <div>
+                    <h4 className="type-body-lg font-semibold mb-2">
+                      💡 Example Prompt Template
+                    </h4>
+                    <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+                      <code>{`I need to build a [feature description].
+
+Please use components from the UI Components Catalog 
+(docs/ui-components.md). Always prefer existing components 
+over creating custom ones.
+
+Requirements:
+- [Requirement 1]
+- [Requirement 2]
+
+Make sure to:
+- Import from @/components/ui/[component-name]
+- Follow design system patterns
+- Use correct variants and props`}</code>
+                    </pre>
+                  </div>
+                  <div>
+                    <h4 className="type-body-lg font-semibold mb-2">
+                      ✅ Best Practices
+                    </h4>
+                    <ul className="list-disc list-inside text-body-base text-muted-foreground space-y-1">
+                      <li>
+                        Add the catalog document to your prompt context at the
+                        start of each session
+                      </li>
+                      <li>
+                        Reference specific components when asking for features
+                      </li>
+                      <li>
+                        Verify the agent is using existing components before
+                        accepting code
+                      </li>
+                      <li>
+                        Check the catalog for component combinations and patterns
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <p className="text-body-base text-muted-foreground">
+                  The catalog includes detailed descriptions, usage examples,
+                  design tokens, and common patterns for all 42+ available
+                  components.
+                </p>
+              </div>
             </div>
           </section>
         )}
