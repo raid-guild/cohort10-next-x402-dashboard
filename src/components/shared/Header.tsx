@@ -12,6 +12,7 @@ import {
 } from "react";
 import type { RefObject } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import HeaderNavLinks, {
   type HeaderNavLink,
@@ -36,7 +37,7 @@ type NavItemWithAnchor = { label: string; anchor: string; href?: undefined; isEx
 type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Brand", href: "/" },
+  { label: "Brand Guide", href: "/" },
   { label: "RaidGuild.org", href: "https://www.raidguild.org/", isExternal: true },
 ];
 
@@ -281,16 +282,7 @@ function Logo({ variant, logoPath }: LogoProps) {
     variant === "tall" ? "h-[150px]" : variant === "thin" ? "h-12" : "h-10";
 
   return (
-    <button
-      onClick={() => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }}
-      className="bg-transparent border-0 p-0 cursor-pointer"
-      aria-label="Scroll to top"
-    >
+    <Link href="/" className="inline-block">
       <Image
         src={logoPath}
         alt="Raid Guild Logo"
@@ -299,7 +291,7 @@ function Logo({ variant, logoPath }: LogoProps) {
         priority
         className={[baseClasses, sizeClasses].join(" ")}
       />
-    </button>
+    </Link>
   );
 }
 

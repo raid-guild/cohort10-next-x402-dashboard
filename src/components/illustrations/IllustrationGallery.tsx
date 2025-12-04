@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type IllustrationVariant = "color" | "bw";
@@ -89,6 +89,14 @@ export default function IllustrationGallery() {
   const filteredIllustrations = illustrations.filter((ill) =>
     ill.sizes.includes(size)
   );
+
+  // When size changes, automatically select the first illustration in the new size category
+  useEffect(() => {
+    const firstInCategory = filteredIllustrations[0];
+    if (firstInCategory && !filteredIllustrations.includes(selectedIllustration)) {
+      setSelectedIllustration(firstInCategory);
+    }
+  }, [size, filteredIllustrations, selectedIllustration]);
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 h-[900px]">

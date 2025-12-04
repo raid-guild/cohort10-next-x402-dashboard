@@ -52,6 +52,18 @@ export default function IllustrationsPage() {
             for cohesive designs. Avoid stretching or distorting artwork—maintain
             original aspect ratios for best results.
           </p>
+          <p className="text-base text-foreground/70">
+            This is a list of{" "}
+            <Link
+              href="https://hackmd.io/@Suede/Skbpddppll"
+              className="text-primary hover:text-primary/80 transition-colors underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Midjourney prompts
+            </Link>{" "}
+            that were used to create these illustrations.
+          </p>
         </section>
 
         {/* Gallery */}

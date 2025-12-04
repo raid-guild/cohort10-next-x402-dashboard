@@ -162,7 +162,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl">
         {/* Quick Resources */}
         <section className="mb-16">
           <h2 className="type-heading-lg text-moloch-500 mb-6">
@@ -227,6 +227,7 @@ export default function Home() {
             <div className="space-y-4">
               <Link
                 href="/logos"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -239,6 +240,7 @@ export default function Home() {
 
               <Link
                 href="/colors"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -251,6 +253,7 @@ export default function Home() {
 
               <Link
                 href="/typography"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -263,6 +266,7 @@ export default function Home() {
 
               <Link
                 href="/illustrations"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -275,6 +279,7 @@ export default function Home() {
 
               <Link
                 href="/iconography"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -299,6 +304,7 @@ export default function Home() {
             <div className="space-y-4">
               <Link
                 href="/ui"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -312,6 +318,7 @@ export default function Home() {
 
               <Link
                 href="/colors"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
@@ -324,6 +331,7 @@ export default function Home() {
 
               <Link
                 href="/typography"
+                target="topw"
                 className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
               >
                 <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
