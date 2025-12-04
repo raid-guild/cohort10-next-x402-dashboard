@@ -260,6 +260,30 @@ export default function Home() {
                   Font families, styles, and typography scale
                 </p>
               </Link>
+
+              <Link
+                href="/illustrations"
+                className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
+              >
+                <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
+                  Illustrations
+                </h3>
+                <p className="type-body-sm text-muted-foreground">
+                  Technology-forward line art library echoing cyberpunk and D&D heroism
+                </p>
+              </Link>
+
+              <Link
+                href="/iconography"
+                className="block p-6 border border-border rounded-lg hover:border-primary hover:bg-muted/50 transition-all group"
+              >
+                <h3 className="type-heading-sm mb-2 group-hover:text-primary transition-colors">
+                  Iconography
+                </h3>
+                <p className="type-body-sm text-muted-foreground">
+                  Magical mystical symbols paired with practical development and community icons
+                </p>
+              </Link>
             </div>
           </section>
 
