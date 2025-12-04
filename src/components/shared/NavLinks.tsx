@@ -5,6 +5,7 @@ export type HeaderNavLink = {
   href: string;
   type: "router" | "anchor";
   anchorId?: string | null;
+  isExternal?: boolean;
 };
 
 type NavLinksTheme = {
@@ -37,7 +38,7 @@ export default function HeaderNavLinks({
           : "flex-col items-stretch gap-3 text-base font-semibold uppercase tracking-[0.25em]",
       ].join(" ")}
     >
-      {links.map(({ label, href, type, anchorId }) => {
+      {links.map(({ label, href, type, anchorId, isExternal }) => {
         const isActive =
           Boolean(activeAnchorId) && anchorId === activeAnchorId ? true : false;
         const classes = [
@@ -54,6 +55,7 @@ export default function HeaderNavLinks({
               href={href}
               className={classes}
               onClick={onLinkClick}
+              {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
             >
               {label}
             </Link>
@@ -66,6 +68,7 @@ export default function HeaderNavLinks({
             href={href}
             className={classes}
             onClick={onLinkClick}
+            {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
           >
             {label}
           </a>

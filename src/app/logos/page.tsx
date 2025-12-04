@@ -45,26 +45,84 @@ export default function LogosPage() {
             <h2 className="type-heading-lg mb-6">Logotype</h2>
             <p className="text-base mb-6 text-foreground/70">
               The full logotype combines the logomark with the &quot;Raid
-              Guild&quot; wordmark.
+              Guild&quot; wordmark. The wordmark is not used solo.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-lg overflow-hidden border border-border">
-                <Image
-                  src="/assets/logos/full-m500-m800.svg"
-                  alt="Raid Guild Logotype on Moloch 500 background"
-                  width={598}
-                  height={335}
-                  className="w-full h-auto"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column - Floating Logos */}
+              <div>
+                <h3 className="type-heading-sm mb-4">Floating</h3>
+                <div className="space-y-4">
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-6">
+                    <Image
+                      src="/assets/logos/full-m800.svg"
+                      alt="Raid Guild Full Logo - Moloch 800"
+                      width={632}
+                      height={166}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-6">
+                    <Image
+                      src="/assets/logos/full-m500.svg"
+                      alt="Raid Guild Full Logo - Moloch 500"
+                      width={632}
+                      height={166}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-6">
+                    <Image
+                      src="/assets/logos/full-s100.svg"
+                      alt="Raid Guild Full Logo - Scroll 100"
+                      width={632}
+                      height={166}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="rounded-lg overflow-hidden border border-border">
-                <Image
-                  src="/assets/logos/full-s100-s700.svg"
-                  alt="Raid Guild Logotype on Scroll 100 background"
-                  width={598}
-                  height={335}
-                  className="w-full h-auto"
-                />
+
+              {/* Right Column - Background Logos */}
+              <div>
+                <h3 className="type-heading-sm mb-4">With Background</h3>
+                <div className="space-y-4">
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <Image
+                      src="/assets/logos/full-m500-m800.svg"
+                      alt="Raid Guild Full Logo - M500 on M800"
+                      width={598}
+                      height={335}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <Image
+                      src="/assets/logos/full-m800-m500.svg"
+                      alt="Raid Guild Full Logo - M800 on M500"
+                      width={598}
+                      height={335}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <Image
+                      src="/assets/logos/full-s100-s700.svg"
+                      alt="Raid Guild Full Logo - S100 on S700"
+                      width={598}
+                      height={335}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border">
+                    <Image
+                      src="/assets/logos/full-m800-s100.svg"
+                      alt="Raid Guild Full Logo - M800 on S100"
+                      width={598}
+                      height={335}
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -75,24 +133,82 @@ export default function LogosPage() {
               The crossed sword logomark can be used independently when space is
               limited or when the full logotype is not appropriate.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="rounded-lg overflow-hidden border border-border">
-                <Image
-                  src="/assets/logos/symbol-m500.svg"
-                  alt="Raid Guild Logomark on Moloch 500 background"
-                  width={112}
-                  height={105}
-                  className="w-full h-auto max-w-xs mx-auto"
-                />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column - Floating Logos */}
+              <div>
+                <h3 className="type-heading-sm mb-4">Floating</h3>
+                <div className="flex flex-col items-start gap-4">
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-8 inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-m800.svg"
+                      alt="Raid Guild Symbol - Moloch 800"
+                      width={112}
+                      height={105}
+                      className="h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-8 inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-m500.svg"
+                      alt="Raid Guild Symbol - Moloch 500"
+                      width={112}
+                      height={105}
+                      className="h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border bg-white p-8 inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-s700.svg"
+                      alt="Raid Guild Symbol - Scroll 700"
+                      width={112}
+                      height={105}
+                      className="h-auto"
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="rounded-lg overflow-hidden border border-border">
-                <Image
-                  src="/assets/logos/symbol-m800-s100.svg"
-                  alt="Raid Guild Logomark on Moloch 800 background"
-                  width={300}
-                  height={300}
-                  className="w-full h-auto max-w-xs mx-auto"
-                />
+
+              {/* Right Column - Background Logos */}
+              <div>
+                <h3 className="type-heading-sm mb-4">With Background</h3>
+                <div className="space-y-4">
+                  <div className="rounded-lg overflow-hidden border border-border inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-m500-m800.svg"
+                      alt="Raid Guild Symbol - M500 on M800"
+                      width={300}
+                      height={300}
+                      className="h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-m800-m500.svg"
+                      alt="Raid Guild Symbol - M800 on M500"
+                      width={300}
+                      height={300}
+                      className="h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-s100-s700.svg"
+                      alt="Raid Guild Symbol - S100 on S700"
+                      width={300}
+                      height={300}
+                      className="h-auto"
+                    />
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-border inline-flex items-center justify-center">
+                    <Image
+                      src="/assets/logos/symbol-m800-s100.svg"
+                      alt="Raid Guild Symbol - M800 on S100"
+                      width={300}
+                      height={300}
+                      className="h-auto"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </section>

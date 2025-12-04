@@ -30,18 +30,19 @@ export default function ColorsPage() {
               </div>
 
               <div className="space-y-4">
-                <div className="bg-moloch-400 h-24 rounded-lg flex items-center justify-center">
+                <div className="bg-moloch-500 h-24 rounded-lg flex items-center justify-center">
                   <span className="text-scroll-100 type-body-lg font-bold">
-                    Moloch 400
+                    Moloch 500
                   </span>
                 </div>
                 <div className="p-4 border border-border rounded-lg">
-                  <h3 className="type-heading-md mb-2">Moloch 400</h3>
+                  <h3 className="type-heading-md mb-2">Moloch 500</h3>
                   <p className="text-body-base text-muted-foreground mb-2">
-                    #D25C41
+                    #BD482D
                   </p>
                 </div>
               </div>
+
               <div className="space-y-4">
                 <div className="bg-scroll-100 h-24 rounded-lg flex items-center justify-center border border-border">
                   <span className="text-moloch-800 type-body-lg font-bold">
@@ -52,6 +53,20 @@ export default function ColorsPage() {
                   <h3 className="type-heading-md mb-2">Scroll 100</h3>
                   <p className="text-body-base text-muted-foreground mb-2">
                     #F9F7E7
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-scroll-700 h-24 rounded-lg flex items-center justify-center">
+                  <span className="text-scroll-100 type-body-lg font-bold">
+                    Scroll 700
+                  </span>
+                </div>
+                <div className="p-4 border border-border rounded-lg">
+                  <h3 className="type-heading-md mb-2">Scroll 700</h3>
+                  <p className="text-body-base text-muted-foreground mb-2">
+                    #534A13
                   </p>
                 </div>
               </div>

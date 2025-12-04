@@ -1,7 +1,137 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const HERO_IMAGES = [
+  "/assets/webp/1080x1440/tower-platform-c.webp",
+  "/assets/webp/1080x1440/stairs-twist-c.webp",
+  "/assets/webp/1080x1440/stairs-curve-c.webp",
+  "/assets/webp/1080x1440/stairs-cloud-c.webp",
+  "/assets/webp/1080x1440/book-orb-c.webp",
+  "/assets/webp/1080x1440/tree-island-c.webp",
+  "/assets/webp/1080x1440/arch-gate-c.webp",
+  "/assets/webp/1080x1440/tower-floating-c.webp",
+  "/assets/webp/1080x1440/tower-tree-c.webp",
+  "/assets/webp/1080x1440/compass-circular-c.webp",
+  "/assets/webp/1080x1440/stone-pedestal-c.webp",
+  "/assets/webp/1080x1440/raven-solo-c.webp",
+  "/assets/webp/1440x1440/castle-staff-c.webp",
+  "/assets/webp/1440x1440/castle-flag-c.webp",
+  "/assets/webp/1440x1440/warriors-moloch-c.webp",
+  "/assets/webp/1440x1440/stairs-spiral-c.webp",
+  "/assets/webp/1440x1440/forge-duo-c.webp",
+  "/assets/webp/1440x1440/forge-anvil-c.webp",
+  "/assets/webp/1440x1440/forge-work-c.webp",
+  "/assets/webp/1440x1440/forge-fire-c.webp",
+  "/assets/webp/1440x1440/trio-portraits-c.webp",
+  "/assets/webp/1440x1440/ravens-flight-c.webp",
+  "/assets/webp/1440x1440/desk-work-c.webp",
+  "/assets/webp/1440x1440/warrior-solo-c.webp",
+  "/assets/webp/1440x1440/trio-profiles-c.webp",
+  "/assets/webp/1440x1440/stone-monuments-c.webp",
+  "/assets/webp/1440x1440/tree-mech-c.webp",
+  "/assets/webp/1440x1440/portal-arch-c.webp",
+  "/assets/webp/1440x1440/forge-building-c.webp",
+  "/assets/webp/1440x1440/table-castle-c.webp",
+  "/assets/webp/1440x1440/trio-arch-c.webp",
+  "/assets/webp/1440x1440/trio-backs-c.webp",
+  "/assets/webp/1440x1440/trio-beast-c.webp",
+  "/assets/webp/1440x1440/trio-wings-c.webp",
+  "/assets/webp/1440x1440/trio-mountain-c.webp",
+  "/assets/webp/1440x1440/trio-orb-c.webp",
+  "/assets/webp/1440x1440/trio-portal-c.webp",
+  "/assets/webp/1440x1440/trio-weapons-c.webp",
+  "/assets/webp/1440x1440/warriors-triangle-c.webp",
+  "/assets/webp/1440x1440/warriors-confident-c.webp",
+  "/assets/webp/1440x1440/warriors-forward-c.webp",
+  "/assets/webp/1440x1440/warriors-casual-c.webp",
+  "/assets/webp/1440x1440/warriors-orbs-c.webp",
+  "/assets/webp/1440x1440/warriors-magic-c.webp",
+  "/assets/webp/1440x1440/warriors-white-c.webp",
+  "/assets/webp/1440x1440/warriors-ready-c.webp",
+  "/assets/webp/1440x1440/warriors-belts-c.webp",
+  "/assets/webp/1440x1440/warriors-standing-c.webp",
+  "/assets/webp/1440x1440/warriors-masked-c.webp",
+  "/assets/webp/1440x1440/warriors-armed-c.webp",
+  "/assets/webp/1440x1440/trio-warriors-c.webp",
+  "/assets/webp/1080x1440/tower-platform-bw.webp",
+  "/assets/webp/1080x1440/stairs-twist-bw.webp",
+  "/assets/webp/1080x1440/stairs-curve-bw.webp",
+  "/assets/webp/1080x1440/stairs-cloud-bw.webp",
+  "/assets/webp/1080x1440/book-orb-bw.webp",
+  "/assets/webp/1080x1440/tree-island-bw.webp",
+  "/assets/webp/1080x1440/arch-gate-bw.webp",
+  "/assets/webp/1080x1440/tower-floating-bw.webp",
+  "/assets/webp/1080x1440/tower-tree-bw.webp",
+  "/assets/webp/1080x1440/compass-circular-bw.webp",
+  "/assets/webp/1080x1440/stone-pedestal-bw.webp",
+  "/assets/webp/1080x1440/raven-solo-bw.webp",
+  "/assets/webp/1440x1440/castle-flag-bw.webp",
+  "/assets/webp/1440x1440/castle-staff-bw.webp",
+  "/assets/webp/1440x1440/warriors-moloch-bw.webp",
+  "/assets/webp/1440x1440/stairs-spiral-bw.webp",
+  "/assets/webp/1440x1440/forge-duo-bw.webp",
+  "/assets/webp/1440x1440/forge-anvil-bw.webp",
+  "/assets/webp/1440x1440/forge-work-bw.webp",
+  "/assets/webp/1440x1440/forge-fire-bw.webp",
+  "/assets/webp/1440x1440/trio-portraits-bw.webp",
+  "/assets/webp/1440x1440/ravens-flight-bw.webp",
+  "/assets/webp/1440x1440/desk-work-bw.webp",
+  "/assets/webp/1440x1440/warrior-solo-bw.webp",
+  "/assets/webp/1440x1440/trio-profiles-bw.webp",
+  "/assets/webp/1440x1440/stone-monuments-bw.webp",
+  "/assets/webp/1440x1440/tree-mech-bw.webp",
+  "/assets/webp/1440x1440/portal-arch-bw.webp",
+  "/assets/webp/1440x1440/forge-building-bw.webp",
+  "/assets/webp/1440x1440/table-castle-bw.webp",
+  "/assets/webp/1440x1440/trio-arch-bw.webp",
+  "/assets/webp/1440x1440/trio-backs-bw.webp",
+  "/assets/webp/1440x1440/trio-beast-bw.webp",
+  "/assets/webp/1440x1440/trio-wings-bw.webp",
+  "/assets/webp/1440x1440/trio-mountain-bw.webp",
+  "/assets/webp/1440x1440/trio-orb-bw.webp",
+  "/assets/webp/1440x1440/trio-portal-bw.webp",
+  "/assets/webp/1440x1440/trio-weapons-bw.webp",
+  "/assets/webp/1440x1440/trio-warriors-bw.webp",
+  "/assets/webp/1440x1440/warriors-triangle-bw.webp",
+  "/assets/webp/1440x1440/warriors-confident-bw.webp",
+  "/assets/webp/1440x1440/warriors-forward-bw.webp",
+  "/assets/webp/1440x1440/warriors-casual-bw.webp",
+  "/assets/webp/1440x1440/warriors-orbs-bw.webp",
+  "/assets/webp/1440x1440/warriors-magic-bw.webp",
+  "/assets/webp/1440x1440/warriors-white-bw.webp",
+  "/assets/webp/1440x1440/warriors-ready-bw.webp",
+  "/assets/webp/1440x1440/warriors-belts-bw.webp",
+  "/assets/webp/1440x1440/warriors-standing-bw.webp",
+  "/assets/webp/1440x1440/warriors-masked-bw.webp",
+  "/assets/webp/1440x1440/warriors-armed-bw.webp",
+];
+
 export default function Home() {
+  // Calculate current image based on 2-minute intervals
+  const getImageForInterval = useCallback(() => {
+    const interval = Math.floor(Date.now() / (1000 * 60 * 2)); // 2 minutes
+    return HERO_IMAGES[interval % HERO_IMAGES.length];
+  }, []);
+
+  const [currentImage, setCurrentImage] = useState<string>(getImageForInterval);
+
+  // Update image every minute to catch 2-minute boundaries
+  useEffect(() => {
+    const checkImage = () => {
+      const newImage = getImageForInterval();
+      if (newImage !== currentImage) {
+        setCurrentImage(newImage);
+      }
+    };
+
+    const intervalId = setInterval(checkImage, 60000); // Check every minute
+
+    return () => clearInterval(intervalId);
+  }, [currentImage, getImageForInterval]);
+
   return (
     <div className="container-custom">
       {/* Hero Section */}
@@ -18,14 +148,17 @@ export default function Home() {
         </div>
 
         {/* Right Column - Image */}
-        <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
-          <Image
-            src="/assets/webp/1080x1440/tower-platform-c.webp"
-            alt="Raid Guild Brand Artwork"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="flex justify-center lg:justify-end lg:pr-[100px] lg:pt-[20px]">
+          <div className="relative w-full lg:max-w-[500px] aspect-[3/4] rounded-lg overflow-hidden">
+            <Image
+              key={currentImage}
+              src={currentImage}
+              alt="Raid Guild Brand Artwork"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </div>
       </div>
 

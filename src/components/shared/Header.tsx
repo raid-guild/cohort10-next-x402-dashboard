@@ -31,13 +31,13 @@ type ThemeConfig = {
   logoPath: string;
 };
 
-type NavItemWithHref = { label: string; href: string; anchor?: undefined };
-type NavItemWithAnchor = { label: string; anchor: string; href?: undefined };
+type NavItemWithHref = { label: string; href: string; anchor?: undefined; isExternal?: boolean };
+type NavItemWithAnchor = { label: string; anchor: string; href?: undefined; isExternal?: boolean };
 type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Brand", href: "/" },
-  { label: "RaidGuild.org", href: "https://www.raidguild.org/" },
+  { label: "RaidGuild.org", href: "https://www.raidguild.org/", isExternal: true },
 ];
 
 const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
@@ -59,7 +59,7 @@ const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
     navActive: "bg-moloch-500",
     navActiveText: "text-scroll-100",
     menuSurface: "bg-moloch-800/95",
-    logoPath: "/assets/logos/full-m800.svg",
+    logoPath: "/assets/logos/full-m500.svg",
   },
   "scroll-700": {
     background: "bg-scroll-700",
@@ -69,7 +69,7 @@ const THEME_CONFIG: Record<HeaderTheme, ThemeConfig> = {
     navActive: "bg-moloch-800",
     navActiveText: "text-scroll-100",
     menuSurface: "bg-scroll-700",
-    logoPath: "/assets/logos/full-m800.svg",
+    logoPath: "/assets/logos/full-s100.svg",
   },
 };
 
@@ -102,6 +102,29 @@ export default function Header({
 
   const headerHeight = isDesktop ? DESKTOP_THIN_HEIGHT : MOBILE_HEADER_HEIGHT;
 
+  // Calculate theme based on 5-minute intervals
+  const getThemeForInterval = useCallback(() => {
+    const themes: HeaderTheme[] = ["moloch-500", "moloch-800", "scroll-700"];
+    const interval = Math.floor(Date.now() / (1000 * 60 * 5)); // 5 minutes
+    return themes[interval % themes.length];
+  }, []);
+
+  const [currentTheme, setCurrentTheme] = useState<HeaderTheme>(getThemeForInterval);
+
+  // Update theme every minute to catch 5-minute boundaries
+  useEffect(() => {
+    const checkTheme = () => {
+      const newTheme = getThemeForInterval();
+      if (newTheme !== currentTheme) {
+        setCurrentTheme(newTheme);
+      }
+    };
+
+    const intervalId = setInterval(checkTheme, 60000); // Check every minute
+
+    return () => clearInterval(intervalId);
+  }, [currentTheme, getThemeForInterval]);
+
   const navAnchorIds = useMemo(
     () =>
       NAV_ITEMS.map((item) => getAnchorId(item)).filter(
@@ -110,7 +133,7 @@ export default function Header({
     []
   );
 
-  const theme = THEME_CONFIG[themeVariant];
+  const theme = THEME_CONFIG[currentTheme];
   const NavLinksComponent = ProvidedNavLinksComponent ?? HeaderNavLinks;
 
   const navLinks = useMemo<HeaderNavLink[]>(
@@ -129,6 +152,7 @@ export default function Header({
           href: staticAppearance ? routerHref : anchorTarget,
           type: staticAppearance ? "router" : "anchor",
           anchorId,
+          isExternal: item.isExternal,
         };
       }),
     [staticAppearance]
