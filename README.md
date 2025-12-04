@@ -2,6 +2,8 @@
 
 2024 Q4 Refresh
 
+A repository of brand guidelines, assets and resources for designers and developers.
+
 ## Setting Up a New App with RaidGuild Brand Guidelines
 
 This guide will help you integrate the RaidGuild brand guidelines into a new Next.js application.
