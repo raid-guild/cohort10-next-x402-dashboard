@@ -1,125 +1,143 @@
-# RaidGuild Brand Guidelines
+# RaidGuild x402 Facilitator Dashboard
 
-2024 Q4 Refresh
+**Turn APIs into revenue streams. Bring devs into the RaidGuild orbit.**
 
-A repository of brand guidelines, assets and resources for designers and developers.
+A Next.js frontend for the RaidGuild x402 facilitator — enabling developers to charge micro-payments for API calls instantly, trustlessly, and without signup friction.
 
-## Setting Up a New App with RaidGuild Brand Guidelines
+## What is x402?
 
-This guide will help you integrate the RaidGuild brand guidelines into a new Next.js application.
+x402 is an emerging standard for autonomous payments on Base and beyond. This dashboard provides:
 
-### 1. Install Required Dependencies
+- **Marketing/Landing Page** — Explain the facilitator, use cases, and integration patterns
+- **Developer Dashboard** — Manage API keys for the hosted facilitator service
+- **Documentation** — Quick-start guides for both self-hosted and hosted flows
+
+## Project Overview
+
+This is the **Next.js frontend** component of the RaidGuild x402 facilitator stack. The Go server handles actual payment processing, while this frontend provides the hosted service experience, developer onboarding, and admin tools.
+
+### Architecture
+
+- **Go Backend**: Self-contained facilitator handling x402 payment processing
+- **Next.js Frontend**: Dashboard, marketing, and developer onboarding (this repo)
+- **Supabase/Postgres**: Stores hashed API keys for hosted service
+- **Decoupled Design**: Go server can run standalone; frontend is optional
+
+## Tech Stack
+
+- **Framework**: Next.js 15.5.5 with Turbopack
+- **React**: 19.1.0
+- **Styling**: Tailwind CSS 4.0 with RaidGuild design tokens
+- **UI Components**: 42+ components built on Radix UI primitives
+- **Forms**: React Hook Form + Zod validation
+- **Icons**: Lucide React
+- **Type Safety**: TypeScript 5
+- **Code Quality**: Biome + Ultracite
+- **Git Hooks**: Lefthook
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+ or Bun
+- Git
+
+### Installation
 
 ```bash
-# Core dependencies
-npm install class-variance-authority clsx lucide-react tailwind-merge
+# Clone the repository
+git clone https://github.com/raid-guild/cohort10-next-x402-dashboard.git
+cd cohort10-next-x402-dashboard
 
-# Development dependencies
-npm install -D @tailwindcss/postcss tw-animate-css
+# Install dependencies
+bun install
+# or npm install
+
+# Run development server
+bun dev
+# or npm run dev
 ```
 
-### 2. Add Font Files
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
-Create a `public/fonts/` directory and add the RaidGuild brand fonts:
+### Available Scripts
+
+- **Biome + Ultracite**: Formats and lints staged files
+- **Stage fixed files**: Automatically stages formatted changes
+- **Enforces conventional commits**: Via commit message format
+
+The hook configuration is in `lefthook.yml`.
+
+## Project Structure
 
 ```
+src/
+├── app/                    # Next.js app router
+│   ├── globals.css        # Global styles with RG design tokens
+│   ├── layout.tsx         # Root layout with fonts and theme
+│   ├── page.tsx           # Home/landing page
+│   └── ui/                # UI component showcase page
+├── components/
+│   ├── ui/                # 42+ reusable UI components
+│   ├── examples/          # Component usage examples
+│   ├── shared/            # Header, Footer, NavLinks
+│   ├── landing/           # Landing page sections (to be created)
+│   └── illustrations/     # Illustration gallery
+├── lib/
+│   ├── fonts.ts           # RaidGuild brand fonts
+│   ├── theme-context.tsx  # Light/dark mode context
+│   └── utils.ts           # Utility functions (cn, etc.)
 public/
-  fonts/
-    ├── MAZIUSREVIEW20.09-Regular.otf
-    ├── MAZIUSREVIEW20.09-Regular.woff
-    ├── EBGaramond-VariableFont_wght.ttf
-    └── EBGaramond-Italic-VariableFont_wght.ttf
+├── assets/
+│   ├── webp/              # 90+ brand illustrations
+│   ├── logos/             # RaidGuild logos
+│   └── icon/              # Icon sets
+└── fonts/                 # RaidGuild brand fonts
+docs/
+└── ui-components.md       # Comprehensive component catalog
 ```
 
-Copy `src/lib/fonts.ts`: into your project.
+## Design System
 
-Update your `src/app/layout.tsx` to include the fonts:
+### RaidGuild Brand
 
-```typescript
-import type { Metadata } from "next";
-import { maziusDisplay, ebGaramond, ubuntuMono } from "@/lib/fonts";
-import "./globals.css";
+This project uses the **RaidGuild brand guidelines** from [brand.raidguild.org](https://brand.raidguild.org/).
 
-export const metadata: Metadata = {
-  title: "My RaidGuild App",
-  description: "Built with RaidGuild brand guidelines",
-};
+#### Typography
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body
-        className={`${maziusDisplay.variable} ${ebGaramond.variable} ${ubuntuMono.variable}`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
-```
+- **Display**: Mazius Display — `.type-display-lg` (80px), `.type-display-md` (60px), `.type-display-sm` (48px)
+- **Body**: EB Garamond — `.type-body-lg` (20px), `.type-body-base` (16px), `.type-body-sm` (12px)
+- **Mono**: Ubuntu Mono — for code blocks
+- **Labels**: `.type-label` (uppercase with letter spacing)
 
-### 2. Update Global CSS
+#### Color Palettes
 
-Replace your `src/app/globals.css` with the RaidGuild brand styles from the globall.css file in this repo.
+**Moloch (Warm Reds)**:
 
-### 3. Add Components
+- `moloch-100` through `moloch-800`
+- Primary: `moloch-500` (#bd482d)
+- Use for: Primary CTAs, accents, brand highlights
 
-#### EXAMPLE
+**Scroll (Warm Yellows)**:
 
-Create `src/components/ui/switch.tsx`:
+- `scroll-100` through `scroll-800`
+- Primary: `scroll-700` (#b5a22c)
+- Use for: Secondary actions, highlights
 
-```typescript
-"use client";
+**Neutrals**: `neutral-100` through `neutral-800`, plus `neutral-white` and `neutral-black`
 
-import * as React from "react";
-import * as SwitchPrimitive from "@radix-ui/react-switch";
+#### Layout System
 
-import { cn } from "@/lib/utils";
+- **Container**: `.container-custom` — Max-width 1280px, responsive padding
+- **Grid**: `.grid-custom` — 4 cols (mobile) → 8 cols (tablet) → 12 cols (desktop)
+- **Border Radius**: Base 0.625rem
 
-function Switch({
-  className,
-  ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
-  return (
-    <SwitchPrimitive.Root
-      data-slot="switch"
-      className={cn(
-        "peer data-[state=checked]:bg-primary data-[state=unchecked]:bg-input focus-visible:border-ring focus-visible:ring-ring/50 dark:data-[state=unchecked]:bg-input/80 inline-flex h-[1.15rem] w-8 shrink-0 items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <SwitchPrimitive.Thumb
-        data-slot="switch-thumb"
-        className={cn(
-          "bg-background dark:data-[state=unchecked]:bg-foreground dark:data-[state=checked]:bg-primary-foreground pointer-events-none block size-4 rounded-full ring-0 transition-transform data-[state=checked]:translate-x-[calc(100%-2px)] data-[state=unchecked]:translate-x-0"
-        )}
-      />
-    </SwitchPrimitive.Root>
-  );
-}
+### UI Components
 
-export { Switch };
-```
-
-#### Example Usage
-
-Now you can use the RaidGuild brand styles and components in your app:
-
-```typescript
-import { Switch } from "@/components/ui/switch";
-
-export default function HomePage() {
-  return (
-    <div className="container-custom py-16">
-      <h1 className="text-display-lg mb-8">Welcome to RaidGuild</h1>
-      <p className="text-body-lg text-muted-foreground mb-8">
-        Built with the RaidGuild brand guidelines
-      </p>
+42+ production-ready components built on Radix UI primitives:splay-lg mb-8">Welcome to RaidGuild</h1>
+<p className="text-body-lg text-muted-foreground mb-8">
+Built with the RaidGuild brand guidelines
+</p>
 
       <div className="flex items-center space-x-2">
         <Switch id="example-switch" />
@@ -128,8 +146,10 @@ export default function HomePage() {
         </label>
       </div>
     </div>
-  );
+
+);
 }
+
 ```
 
 ### 4. Available Typography Classes
@@ -165,20 +185,75 @@ A comprehensive catalog of all available UI components is available in `docs/ui-
 - Follows design system patterns
 - Uses correct imports and props
 
-#### What's in the Catalog
+- **Layout**: Card, Sheet, Dialog, Drawer, Tabs, Accordion
+- **Forms**: Input, Textarea, Select, Checkbox, Radio, DatePicker, Combobox, Multiselect
+- **Navigation**: NavigationMenu, Breadcrumb, Pagination, Sidebar
+- **Feedback**: Progress, Skeleton, HoverCard, Tooltip
+- **Data**: Table, DataTable, Chart
+- **Actions**: Button, DropdownMenu, Command, Menubar
+- **Utilities**: Badge, Kbd, Separator, ScrollArea, Popover
 
-The catalog includes:
+**Full catalog**: See [`docs/ui-components.md`](docs/ui-components.md) for complete component documentation with examples, props, and usage patterns.
 
-- Complete list of all 42+ UI components
-- Detailed descriptions and use cases
-- Import paths and exports
-- Component variants and props
-- Design tokens (colors, typography, spacing)
-- Common component combinations
-- Code examples and patterns
-- Quick reference guide
-- Accessibility guidelines
+### Visual Assets
 
-**Location:** `docs/ui-components.md`
+**Illustrations Library**: 90+ hand-drawn illustrations in `public/assets/webp/`
+- Sizes: 1440x1440 (square), 1080x1440 (portrait), 1440x550 (wide)
+- Variants: Color and black & white versions
+- Categories: Warriors, castles, nature, architecture
 
-**When to use:** Always reference this document when building UI features or working with LLM agents.
+**Logos**: Multiple variants in `public/assets/logos/`
+
+## Landing Page Plan
+
+### Sections to Build
+
+1. **Hero Section** — Value prop, CTAs, hero image
+2. **Features Section** — Key benefits with cards
+3. **How It Works** — Step-by-step process
+4. **Stats/Social Proof** — Metrics cards
+5. **FAQ** — Accordion with common questions
+6. **CTA/Lead Capture** — Contact/demo form
+
+### Components to Create
+
+Create in `src/components/landing/`:
+- `HeroSection.tsx` — Hero with CTA buttons
+- `FeaturesSection.tsx` — Feature cards grid
+- `StatsSection.tsx` — Metrics display
+- `CTASection.tsx` — Lead capture form
+
+## Contributing
+
+This is a RaidGuild Cohort 10 project. Contributions should follow:
+
+1. **Conventional commits** — Required format enforced by pre-commit hooks
+2. **Verified commits** — Sign your commits with GPG
+3. **Biome formatting** — Run `bun format` before committing (or let pre-commit hook handle it)
+4. **Component-first approach** — Use existing UI components from `src/components/ui/`
+5. **Brand guidelines** — Follow RaidGuild design tokens and patterns
+
+### For LLM Developer Agents
+
+When working with AI coding assistants:
+
+1. **Always reference** [`docs/ui-components.md`](docs/ui-components.md) in your context
+2. Use existing components instead of creating custom alternatives
+3. Follow design system patterns and tokens
+4. Import from `@/components/ui/` for all UI elements
+
+## Related Repositories
+
+- **Go Facilitator**: [raid-guild/x402-facilitator](https://github.com/raid-guild/x402-facilitator) (backend)
+- **Brand Guidelines**: [brand.raidguild.org](https://brand.raidguild.org/)
+
+## License
+
+MIT
+
+## Contact
+
+- **Discord**: RaidGuild Discord
+- **GitHub**: [@raid-guild](https://github.com/raid-guild)
+- **Website**: [raidguild.org](https://raidguild.org)
+```

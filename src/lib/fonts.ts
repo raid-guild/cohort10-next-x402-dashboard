@@ -3,34 +3,34 @@ import localFont from "next/font/local";
 
 // Primary Display Font - Mazius Display
 export const maziusDisplay = localFont({
-  src: [
-    {
-      path: "../../public/fonts/MAZIUSREVIEW20.09-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/MaziusDisplay-Bold.otf",
-      weight: "700",
-      style: "bold",
-    },
-  ],
-  variable: "--font-display",
-  display: "swap",
+	src: [
+		{
+			path: "../../public/fonts/MAZIUSREVIEW20.09-Regular.woff",
+			weight: "400",
+			style: "normal",
+		},
+		{
+			path: "../../public/fonts/MaziusDisplay-Bold.otf",
+			weight: "700",
+			style: "bold",
+		},
+	],
+	variable: "--font-display",
+	display: "swap",
 });
 
 // Secondary Body Font - EB Garamond
 export const ebGaramond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
+	subsets: ["latin"],
+	variable: "--font-body",
+	weight: ["400", "500", "600", "700"],
+	style: ["normal", "italic"],
+	display: "swap",
 });
 
 export const ubuntuMono = Ubuntu_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "700"],
-  display: "swap",
+	subsets: ["latin"],
+	variable: "--font-mono",
+	weight: ["400", "700"],
+	display: "swap",
 });

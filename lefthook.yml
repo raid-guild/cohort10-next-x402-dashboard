@@ -1,0 +1,117 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://lefthook.dev/configuration/
+#
+# pre-push:
+#   jobs:
+#     - name: packages audit
+#       tags:
+#         - frontend
+#         - security
+#       run: yarn audit
+#
+#     - name: gems audit
+#       tags:
+#         - backend
+#         - security
+#       run: bundle audit
+#
+# pre-commit:
+#   parallel: true
+#   jobs:
+#     - run: yarn eslint {staged_files}
+#       glob: "*.{js,ts,jsx,tsx}"
+#
+#     - name: rubocop
+#       glob: "*.rb"
+#       exclude:
+#         - config/application.rb
+#         - config/routes.rb
+#       run: bundle exec rubocop --force-exclusion {all_files}
+#
+#     - name: govet
+#       files: git ls-files -m
+#       glob: "*.go"
+#       run: go vet {files}
+#
+#     - script: "hello.js"
+#       runner: node
+#
+#     - script: "hello.go"
+#       runner: go run
+
+# pre-commit:
+#   parallel: true
+#   commands:
+#     biome-check:
+#       glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+#       run: bun biome check --write {staged_files}
+#       stage_fixed: true
+
+#     biome-format:
+#       glob: "*.{js,ts,jsx,tsx,json,jsonc,css,html,md}"
+#       run: bun biome format --write {staged_files}
+#       stage_fixed: true
+
+#     type-check:
+#       glob: "*.{ts,tsx}"
+#       run: bun run type-check
+#       skip:
+#         - merge
+#         - rebase
+
+# pre-push:
+#   parallel: true
+#   commands:
+#     biome-ci:
+#       run: bun biome ci
+
+#     build-check:
+#       run: bun run build
+#       skip:
+#         - merge
+#         - rebase
+
+#     test:
+#       run: bun test
+#       fail_text: "Tests failed. Please fix failing tests before pushing."
+#       skip:
+#         - merge
+#         - rebase
+
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      glob: "src/**/*.{js,ts,jsx,tsx,json,jsonc}"
+      run: bun biome check --write {staged_files}
+      stage_fixed: true
+      fail_text: "Biome linting failed. Files have been auto-fixed and staged."
+
+    # biome-format:
+    #   glob: "src/**/*.{js,ts,jsx,tsx,json,jsonc,css,html,md}"
+    #   run: bun biome format --write {staged_files}
+    #   stage_fixed: true
+    #   fail_text: "Code formatting issues fixed and staged."
+
+    type-check:
+      glob: "*.{ts,tsx}"
+      run: bun run type-check
+      fail_text: "TypeScript compilation errors found. Please fix before committing."
+      skip:
+        - merge
+        - rebase
+
+pre-push:
+  commands:
+    biome-ci:
+      run: bun biome ci
+      fail_text: "Biome CI checks failed. Run 'bun biome check --write' to fix issues."
+
+    build-check:
+      run: bun run build
+      fail_text: "Build failed. Please fix compilation errors before pushing."
+      skip:
+        - merge
+        - rebase
