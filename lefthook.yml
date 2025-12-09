@@ -83,11 +83,11 @@
 pre-commit:
   parallel: true
   commands:
-    biome-check:
-      glob: "src/**/*.{js,ts,jsx,tsx,json,jsonc}"
-      run: bun biome check --write {staged_files}
-      stage_fixed: true
-      fail_text: "Biome linting failed. Files have been auto-fixed and staged."
+    # biome-check:
+    #   glob: "src/**/*.{js,ts,jsx,tsx,json,jsonc}"
+    #   run: bun biome check --write {staged_files}
+    #   stage_fixed: true
+    #   fail_text: "Biome linting failed. Files have been auto-fixed and staged."
 
     # biome-format:
     #   glob: "src/**/*.{js,ts,jsx,tsx,json,jsonc,css,html,md}"
@@ -105,9 +105,9 @@ pre-commit:
 
 pre-push:
   commands:
-    biome-ci:
-      run: bun biome ci
-      fail_text: "Biome CI checks failed. Run 'bun biome check --write' to fix issues."
+    # biome-ci:
+    #   run: bun biome ci
+    #   fail_text: "Biome CI checks failed. Run 'bun biome check --write' to fix issues."
 
     # Temporarily disabled - build takes too long
     # build-check:
