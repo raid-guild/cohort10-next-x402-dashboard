@@ -15,6 +15,7 @@ import {
 	useState,
 } from "react";
 import HeaderNavLinks, { type HeaderNavLink, type HeaderNavLinksProps } from "./NavLinks";
+import AuthButton from "@/components/auth/AuthButton";
 
 type HeaderTheme = "moloch-500" | "moloch-800" | "scroll-700";
 
@@ -243,6 +244,9 @@ function HeaderDesktop({ theme, activeAnchorId, NavLinksComponent, links }: Head
 				variant="desktop"
 				links={links}
 			/>
+			<div className="ml-4">
+				<AuthButton />
+			</div>
 		</div>
 	);
 }
@@ -259,6 +263,7 @@ function HeaderMobile({ theme, isMenuOpen, panelId, onToggleMenu, triggerRef }: 
 	return (
 		<div className="flex items-center justify-between gap-4 py-4">
 			<Logo variant="mobile" logoPath={theme.logoPath} />
+			<AuthButton />
 			<MenuButton
 				ref={triggerRef}
 				isOpen={isMenuOpen}
@@ -535,8 +540,8 @@ function useMobileMenu({ panelRef, triggerRef }: UseMobileMenuOptions): MobileMe
 
 		const focusableElements = panel
 			? Array.from(
-					panel.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])'),
-				).filter((element) => !element.hasAttribute("disabled"))
+				panel.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])'),
+			).filter((element) => !element.hasAttribute("disabled"))
 			: [];
 
 		const firstFocusable = focusableElements[0];
