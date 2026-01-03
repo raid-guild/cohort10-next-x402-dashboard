@@ -1,95 +1,147 @@
 'use client'
 
 import { useState } from 'react'
-import DashboardHeader from "@/components/dashboard/DashboardHeader"
-import ApiKeysTable from "@/components/dashboard/ApiKeysTable"
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-
-// Mock data for demonstration
-const mockApiKeys = [
-    {
-        id: '1',
-        keyId: 'key_8f3c...a91d',
-        createdBy: '2025-30-14 · 2 weeks ago',
-        status: 'Active' as const
-    },
-    {
-        id: '2',
-        keyId: 'key_8f3c...a91d',
-        createdBy: '2025-09-20 · 3 months ago',
-        status: 'Active' as const
-    },
-    {
-        id: '3',
-        keyId: 'key_8f3c...a91d',
-        createdBy: '2025-01-14 · 2 hours ago',
-        status: 'Inactive' as const
-    },
-]
+import { useConnection } from 'wagmi'
+import DashboardHeader from '@/components/dashboard/DashboardHeader'
+import ApiKeysTable from '@/components/dashboard/ApiKeysTable'
+import ApiKeyGenerateDialog from '@/components/dashboard/ApiKeyGenerateDialog'
+import ApiKeyDisplayDialog from '@/components/dashboard/ApiKeyDisplayDialog'
+import ApiKeyRevokeDialog from '@/components/dashboard/ApiKeyRevokeDialog'
+import ApiKeysPricingSelect from '@/components/dashboard/ApiKeysPricingSelect'
+import { Alert, AlertDescription } from '@/components/ui/alert'
+import { AlertCircle, Loader2 } from 'lucide-react'
+import { useApiKeys, useGenerateApiKey, useRevokeApiKey } from '@/hooks/useApiKeys'
 
 export default function DashboardPage() {
-    const [showKeys, setShowKeys] = useState(true) // Toggle to test empty state
+  const { address } = useConnection()
+  const [showGenerateDialog, setShowGenerateDialog] = useState(false)
+  const [showKeyDialog, setShowKeyDialog] = useState(false)
+  const [showRevokeDialog, setShowRevokeDialog] = useState(false)
+  const [newApiKey, setNewApiKey] = useState<string | null>(null)
+  const [keyToRevoke, setKeyToRevoke] = useState<string | null>(null)
 
-    return (
-        <>
-            <DashboardHeader title="API keys" />
-            <div className="py-8 px-8">
-                {/* Pricing Dropdown */}
-                <div className="mb-6">
-                    <Select>
-                        <SelectTrigger className="w-full max-w-xs bg-white border-neutral-300">
-                            <SelectValue placeholder="See API key pricing details" />
-                        </SelectTrigger>
-                        <SelectContent className='bg-neutral-100'>
-                            <div className="p-4 space-y-3 ">
-                                <div className="flex justify-between items-center">
-                                    <span className="text-sm font-medium text-neutral-900">Price</span>
-                                    <span className="text-sm text-neutral-900">$5</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <span className="text-sm font-medium text-neutral-900">Network</span>
-                                    <span className="text-sm text-neutral-900">EVM</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <span className="text-sm font-medium text-neutral-900">Recipient</span>
-                                    <span className="text-sm text-neutral-900">RaidGuild</span>
-                                </div>
-                            </div>
-                        </SelectContent>
-                    </Select>
-                </div>
+  // React Query hooks
+  const { data: apiKeys = [], isLoading, error } = useApiKeys(address)
+  const generateMutation = useGenerateApiKey()
+  const revokeMutation = useRevokeApiKey()
 
-               <div className="max-w-[593px]">
-                 {/* Section Header */}
-                <div className="mb-6">
-                    <div className="flex items-start justify-between mb-2">
-                        <div>
-                            <h2 className="text-3xl font-bold text-moloch-900 font-serif mb-1">
-                                List of API keys
-                            </h2>
-                            <p className="text-sm text-neutral-600">
-                                Find below a list of all generated API keys
-                            </p>
-                        </div>
-                        <button 
-                            className="bg-[#2D1810] hover:bg-[#3D2418] text-white px-6 py-2 rounded-lg text-sm font-normal transition-colors whitespace-nowrap"
-                            onClick={() => alert('Generate new key functionality coming soon!')}
-                        >
-                            Generate new key
-                        </button>
-                    </div>
-                </div>
+  const handleGenerate = async (params: { environment: 'live' | 'test'; name?: string }) => {
+    if (!address) return
 
-                {/* API Keys Table */}
-                <ApiKeysTable apiKeys={showKeys ? mockApiKeys : []} />
-               </div>
+    try {
+      const result = await generateMutation.mutateAsync({
+        walletAddress: address,
+        ...params,
+      })
+
+      setNewApiKey(result.apiKey)
+      setShowGenerateDialog(false)
+      setShowKeyDialog(true)
+    } catch (err) {
+      // Error is handled by React Query
+      console.error('Generate error:', err)
+    }
+  }
+
+  const handleRevoke = async () => {
+    if (!address || !keyToRevoke) return
+
+    try {
+      await revokeMutation.mutateAsync({
+        walletAddress: address,
+        keyId: keyToRevoke,
+      })
+
+      setShowRevokeDialog(false)
+      setKeyToRevoke(null)
+    } catch (err) {
+      // Error is handled by React Query
+      console.error('Revoke error:', err)
+    }
+  }
+
+  const openRevokeDialog = (keyId: string) => {
+    setKeyToRevoke(keyId)
+    setShowRevokeDialog(true)
+  }
+
+  return (
+    <>
+      <DashboardHeader title="API keys" />
+      <div className="py-8 px-8">
+        {(error || generateMutation.error || revokeMutation.error) && (
+          <Alert variant="destructive" className="mb-6 max-w-[800px]">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              {error?.message || 
+               generateMutation.error?.message || 
+               revokeMutation.error?.message}
+            </AlertDescription>
+          </Alert>
+        )}
+
+        {/* Pricing Dropdown */}
+        <div className="mb-6">
+          <ApiKeysPricingSelect />
+        </div>
+
+        <div className="max-w-[800px]">
+          {/* Section Header */}
+          <div className="mb-6">
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <h2 className="text-3xl font-bold text-moloch-900 font-serif mb-1">
+                  List of API keys
+                </h2>
+                <p className="text-sm text-neutral-600">
+                  Find below a list of all generated API keys
+                </p>
+              </div>
+              <button
+                className="bg-[#2D1810] hover:bg-[#3D2418] text-white px-4 py-2.5 rounded-xl h-11! text-base font-normal transition-colors whitespace-nowrap disabled:opacity-50"
+                onClick={() => setShowGenerateDialog(true)}
+                disabled={isLoading}
+              >
+                Generate new key
+              </button>
             </div>
-        </>
-    )
+          </div>
+
+          {/* API Keys Table */}
+          {isLoading ? (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 className="h-8 w-8 animate-spin text-neutral-600" />
+            </div>
+          ) : (
+            <ApiKeysTable
+              apiKeys={apiKeys}
+              onGenerate={() => setShowGenerateDialog(true)}
+              onRevoke={openRevokeDialog}
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Dialogs */}
+      <ApiKeyGenerateDialog
+        open={showGenerateDialog}
+        onOpenChange={setShowGenerateDialog}
+        onGenerate={handleGenerate}
+        isGenerating={generateMutation.isPending}
+      />
+
+      <ApiKeyDisplayDialog
+        open={showKeyDialog}
+        onOpenChange={setShowKeyDialog}
+        apiKey={newApiKey}
+      />
+
+      <ApiKeyRevokeDialog
+        open={showRevokeDialog}
+        onOpenChange={setShowRevokeDialog}
+        onRevoke={handleRevoke}
+        isRevoking={revokeMutation.isPending}
+      />
+    </>
+  )
 }

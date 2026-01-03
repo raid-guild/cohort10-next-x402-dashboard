@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useAccount, useSignMessage } from 'wagmi'
+import { useConnection, useSignMessage } from 'wagmi'
 import { useAppKit } from '@reown/appkit/react'
 import { createSiweMessage } from '@/lib/auth/siwe'
 import { API_ROUTES, REDIRECT_ROUTES } from '@/lib/routes'
@@ -13,7 +13,7 @@ import { ExternalLink } from 'lucide-react' // Using as placeholder for eth icon
 export default function LoginPage() {
     const router = useRouter()
     const { open } = useAppKit()
-    const { address, chainId, isConnected } = useAccount()
+    const { address, chainId, isConnected } = useConnection()
     const { signMessageAsync } = useSignMessage()
     const [isLoading, setIsLoading] = useState(false)
     const [isSigningIn, setIsSigningIn] = useState(false)

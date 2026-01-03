@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { useAccount, useDisconnect } from 'wagmi'
+import { useConnection, useDisconnect } from 'wagmi'
 import { createClient } from '@/lib/supabase/client'
 import {
     CreditCard,
@@ -37,7 +37,6 @@ import { useSidebar } from '@/context/SidebarContext'
 
 const navigation = [
     { name: 'Overview', href: MAIN_APP_ROUTES.dashboard, icon: LayoutDashboard },
-    // { name: 'API Keys', href: `${MAIN_APP_ROUTES.dashboard}/api-keys`, icon: Key },
     // { name: 'Usage', href: `${MAIN_APP_ROUTES.dashboard}/usage`, icon: CreditCard },
     // { name: 'Team', href: `${MAIN_APP_ROUTES.dashboard}/team`, icon: Users },
     // { name: 'Settings', href: `${MAIN_APP_ROUTES.dashboard}/settings`, icon: Settings },
@@ -47,7 +46,7 @@ export default function Sidebar() {
     const { isCollapsed } = useSidebar()
     const pathname = usePathname()
     const router = useRouter()
-    const { address } = useAccount()
+    const { address } = useConnection()
     const { disconnect } = useDisconnect()
     const [orgName, setOrgName] = useState<string>('')
     const [isLoadingOrg, setIsLoadingOrg] = useState(true)
@@ -148,7 +147,7 @@ export default function Sidebar() {
                             <p className="text-xl font-bold text-moloch-800 font-serif">Developers</p>
                         </div>
                         <nav className="flex flex-col space-y-0.5">
-                            {/* {navigation.map((item) => {
+                            {navigation.map((item) => {
                                 const active = item.href === MAIN_APP_ROUTES.dashboard ? pathname === item.href : pathname.startsWith(item.href)
                                 return (
                                     <Link
@@ -165,7 +164,7 @@ export default function Sidebar() {
                                         {item.name}
                                     </Link>
                                 )
-                            })} */}
+                            })}
                         </nav>
                     </div>
 

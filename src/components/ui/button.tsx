@@ -15,6 +15,8 @@ const buttonVariants = cva(
 					"border-2 border-moloch-800 bg-scroll-100 text-moloch-800 hover:bg-moloch-800 hover:text-scroll-100",
 				ghost: "bg-transparent text-moloch-500 hover:text-scroll-100/80",
 				moloch: "bg-moloch-800 text-moloch-500 hover:bg-moloch-700",
+				destructive: "bg-red-600 text-white hover:bg-red-700",
+				outline: "border-2 border-neutral-300 bg-white text-neutral-900 hover:bg-neutral-100",
 			},
 			size: {
 				default: "px-8 py-3",

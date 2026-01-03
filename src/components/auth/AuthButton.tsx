@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useAccount, useSignMessage } from 'wagmi'
+import { useConnection, useSignMessage } from 'wagmi'
 import { createSiweMessage } from '@/lib/auth/siwe'
 
 export default function AuthButton() {
-    const { address, chainId, isConnected } = useAccount()
+    const { address, chainId, isConnected } = useConnection()
     const { signMessageAsync } = useSignMessage()
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isLoading, setIsLoading] = useState(false)

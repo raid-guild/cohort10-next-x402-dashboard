@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAccount } from 'wagmi'
+import { useConnection } from 'wagmi'
 import DashboardHeader from "@/components/dashboard/DashboardHeader"
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -12,7 +12,7 @@ import { MAIN_APP_ROUTES } from '@/lib/routes'
 
 export default function CreateOrgPage() {
     const router = useRouter()
-    const { address } = useAccount()
+    const { address } = useConnection()
     const [orgName, setOrgName] = useState('')
     const [email, setEmail] = useState('')
     const [isLoading, setIsLoading] = useState(false)

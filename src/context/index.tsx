@@ -2,6 +2,7 @@
 
 import { wagmiAdapter, projectId } from "@/config";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createAppKit } from "@reown/appkit/react";
 import { mainnet, base } from "@reown/appkit/networks";
 import React, { type ReactNode } from "react";
@@ -54,7 +55,10 @@ function ContextProvider({
       config={wagmiAdapter.wagmiConfig as Config}
       initialState={initialState}
     >
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }
