@@ -65,11 +65,13 @@ export function getKeyPrefix(key: string): string {
  * 
  * @param environment - 'live' or 'test'
  * @param expiryYears - Number of years until expiry (default: 1)
+ * @param expiryDays - Number of days until expiry (optional, takes precedence)
  * @returns ApiKey object with key, hash, and expiry
  */
 export async function generateApiKey(
   environment: ApiKeyEnvironment = 'live',
-  expiryYears = 1
+  expiryYears = 1,
+  expiryDays?: number
 ): Promise<ApiKey> {
   // Generate 32 random characters (using crypto.randomBytes for security)
   const randomPart = randomBytes(16).toString('hex') // 16 bytes = 32 hex chars
@@ -82,7 +84,11 @@ export async function generateApiKey(
   
   // Calculate expiry date
   const expiresAt = new Date()
-  expiresAt.setFullYear(expiresAt.getFullYear() + expiryYears)
+  if (expiryDays !== undefined) {
+    expiresAt.setDate(expiresAt.getDate() + expiryDays)
+  } else {
+    expiresAt.setFullYear(expiresAt.getFullYear() + expiryYears)
+  }
   
   return {
     key,

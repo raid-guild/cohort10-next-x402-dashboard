@@ -3,6 +3,60 @@ import { cookies } from 'next/headers'
 import { createClient } from '@/lib/supabase/server'
 import { generateApiKey, getKeyPrefix } from '@/lib/api-keys'
 
+const PAYMENT_TIMEOUT_SECONDS = 600
+const USDC_DECIMALS = 6
+const KEY_EXPIRY_DAYS = 30
+
+function parseUsdcAmount(amountDecimal: string) {
+  const normalized = amountDecimal.trim()
+  if (!/^\d+(\.\d+)?$/.test(normalized)) {
+    throw new Error('Invalid PRICE_IN_USDC value')
+  }
+
+  const [whole = '0', fraction = ''] = normalized.split('.')
+  const paddedFraction = `${fraction}000000`.slice(0, USDC_DECIMALS)
+  const amount =
+    BigInt(whole) * BigInt(10 ** USDC_DECIMALS) + BigInt(paddedFraction)
+
+  return {
+    amount: amount.toString(),
+    amountDecimal: normalized,
+  }
+}
+
+function buildPaymentRequirements() {
+  const facilitatorUrl = process.env.X402_FACILITATOR_URL
+  const facilitatorKey = process.env.X402_FACILITATOR_API_KEY
+  const recipient = process.env.SERVICE_RECIPIENT_ADDRESS
+  const asset = process.env.USDC_BASE_ADDRESS
+  const priceInUsdc = process.env.PRICE_IN_USDC || '0.1'
+
+  if (!facilitatorUrl || !facilitatorKey || !recipient || !asset) {
+    throw new Error('Missing x402 facilitator configuration')
+  }
+
+  const { amount, amountDecimal } = parseUsdcAmount(priceInUsdc)
+
+  return {
+    paymentRequirements: {
+      scheme: 'exact' as const,
+      network: 'eip155:8453',
+      asset,
+      payTo: recipient,
+      amount,
+      amountDecimal,
+      maxTimeoutSeconds: PAYMENT_TIMEOUT_SECONDS,
+      extra: {
+        name: 'USD Coin',
+        version: '2',
+      },
+      x402Version: 2,
+    },
+    facilitatorUrl,
+    facilitatorKey,
+  }
+}
+
 /**
  * POST /api/keys/generate
  * Generate a new API key for the user's organization
@@ -63,8 +117,85 @@ export async function POST(request: NextRequest) {
 
     const organization = organizations[0]
 
+    const { paymentRequirements, facilitatorUrl, facilitatorKey } =
+      buildPaymentRequirements()
+
+    const paymentHeader = request.headers.get('X-402-Payment')
+
+    if (!paymentHeader) {
+      return NextResponse.json(
+        { paymentRequirements },
+        { status: 402 }
+      )
+    }
+
+    let paymentPayload: unknown
+    try {
+      paymentPayload = JSON.parse(paymentHeader)
+    } catch (error) {
+      console.error('Invalid X-402-Payment header:', error)
+      return NextResponse.json(
+        { error: 'Invalid X-402-Payment header' },
+        { status: 400 }
+      )
+    }
+
+    console.log('x402 verify -> sending to facilitator')
+    const verifyResponse = await fetch(`${facilitatorUrl}/verify`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': facilitatorKey,
+      },
+      body: JSON.stringify(paymentPayload),
+    })
+
+    const verifyData = await verifyResponse.json().catch(() => ({}))
+    console.log('x402 verify <- response', {
+      status: verifyResponse.status,
+      ok: verifyResponse.ok,
+      body: verifyData,
+    })
+
+    if (!verifyResponse.ok || !verifyData?.isValid) {
+      console.error('x402 verify failed:', verifyData)
+      return NextResponse.json(
+        { error: 'Payment verification failed', paymentRequirements },
+        { status: 402 }
+      )
+    }
+
+    console.log('x402 settle -> sending to facilitator')
+    const settleResponse = await fetch(`${facilitatorUrl}/settle`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': facilitatorKey,
+      },
+      body: JSON.stringify(paymentPayload),
+    })
+
+    const settleData = await settleResponse.json().catch(() => ({}))
+    console.log('x402 settle <- response', {
+      status: settleResponse.status,
+      ok: settleResponse.ok,
+      body: settleData,
+    })
+
+    if (!settleResponse.ok) {
+      console.error('x402 settle failed:', settleData)
+      return NextResponse.json(
+        { error: 'Payment settlement failed', paymentRequirements },
+        { status: 402 }
+      )
+    }
+
     // Generate new API key
-    const apiKey = await generateApiKey(environment === 'test' ? 'test' : 'live', expiryYears)
+    const apiKey = await generateApiKey(
+      environment === 'test' ? 'test' : 'live',
+      expiryYears,
+      KEY_EXPIRY_DAYS
+    )
     const keyPrefix = getKeyPrefix(apiKey.key)
 
     console.log('Generated API key for org:', organization.id)

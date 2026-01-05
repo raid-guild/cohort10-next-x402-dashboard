@@ -5,57 +5,57 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const features = [
 	{
 		icon: Zap,
-		title: "Instant Micropayments",
+		title: "Instant Settlement",
 		description:
-			"Charge fractions of a cent per API call. Payments settle in ~100ms with zero intermediaries.",
-		badge: "Core Feature",
+			"Facilitator verifies and settles payments on-chain before forwarding requests.",
+		badge: "Core",
 	},
 	{
 		icon: Shield,
-		title: "Trustless & Private",
+		title: "Non-Custodial",
 		description:
-			"No KYC, no accounts, no centralized providers. Just cryptographic proof and settlement.",
-		badge: "Privacy First",
+			"Users sign authorizations; the facilitator submits transactions without holding keys.",
+		badge: "Secure",
 	},
 	{
 		icon: Code2,
-		title: "Developer-Friendly",
+		title: "Drop-In Integration",
 		description:
-			"Drop-in integration with any REST API. Works with existing backends, no refactoring required.",
-		badge: "Easy Setup",
+			"Front your existing REST API with x402 requirements. No backend refactor needed.",
+		badge: "Easy",
 	},
 	{
 		icon: Wallet,
-		title: "Autonomous Agents Ready",
+		title: "Gasless for Payers",
 		description:
-			"Built for the agentic economy. AI agents can pay for API access without human intervention.",
-		badge: "Future-Proof",
+			"EIP-3009 authorizations let payers avoid gas while still settling on-chain.",
+		badge: "Low Friction",
 	},
 	{
 		icon: Lock,
-		title: "Self-Hosted or Managed",
-		description: "Deploy your own facilitator or use RaidGuild's hosted service. Full flexibility.",
+		title: "Hosted or Self-Hosted",
+		description: "Use the hosted Turnstile Pay flow or deploy the Go facilitator yourself.",
 		badge: "Flexible",
 	},
 	{
 		icon: GitBranch,
-		title: "100% Open Source",
-		description: "MIT licensed. Audit the code, fork it, extend it. No vendor lock-in, ever.",
-		badge: "Open Source",
+		title: "Open Source",
+		description: "MIT licensed. Audit the code, fork it, extend it. No lock-in.",
+		badge: "OSS",
 	},
 	{
 		icon: Gauge,
-		title: "Production-Ready",
+		title: "High Performance",
 		description:
-			"Battle-tested infrastructure with monitoring, logging, and error handling built in.",
-		badge: "Reliable",
+			"Go-based facilitator built for low latency and high concurrency.",
+		badge: "Fast",
 	},
 	{
 		icon: Globe,
-		title: "Network Agnostic",
+		title: "Base First",
 		description:
-			"Optimized for Base L2 with low fees and fast finality. Multi-chain support coming soon.",
-		badge: "Base Optimized",
+			"Optimized for Base L2 today, with multi-chain support planned next.",
+		badge: "Base",
 	},
 ];
 
@@ -66,10 +66,10 @@ export default function FeaturesSection() {
 				<Badge variant="scroll" className="mb-4">
 					Features
 				</Badge>
-				<h2 className="type-display-md mb-4">Everything you need to monetize APIs</h2>
+				<h2 className="type-display-md mb-4">Infrastructure, not headache</h2>
 				<p className="type-body-lg mx-auto max-w-2xl text-neutral-700 dark:text-neutral-300">
-					A complete facilitator stack designed for developers who want to turn API access into
-					revenue without the complexity of payment processing.
+					Turnstile Pay removes the plumbing so you can focus on your product and your agents can
+					pay instantly.
 				</p>
 			</div>
 

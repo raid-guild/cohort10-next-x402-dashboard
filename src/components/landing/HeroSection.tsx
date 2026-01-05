@@ -46,49 +46,51 @@ export default function HeroSection() {
 				{/* Left Column - Text Content */}
 				<div className="flex flex-col justify-center space-y-6">
 					<Badge variant="moloch" className="w-fit">
-						x402 Protocol
+						RaidGuild x402 Turnstile Pay
 					</Badge>
 
 					<h1 className="type-display-lg md:type-display-md leading-tight">
-						Turn APIs into <span className="text-moloch-500">revenue streams</span>
+						The missing payment layer for the{" "}
+						<span className="text-moloch-500">agent economy</span>
 					</h1>
 
 					<p className="type-body-lg max-w-xl text-neutral-700 dark:text-neutral-300">
-						The RaidGuild x402 facilitator enables developers to charge micro-payments for API calls
-						— instantly, trustlessly, and without signup friction. One gateway to monetize any
-						endpoint.
+						Humans have Stripe. AI agents have nothing. Turnstile Pay is a hosted x402 facilitator
+						that absorbs wallet and signature complexity so your agents can pay instantly.
 					</p>
 
 					<div className="flex flex-col gap-4 pt-4 sm:flex-row">
-						<Button size="sm" variant="primary" rightIcon={<ArrowRight />}>
-							Get Started
+						<Button size="sm" variant="primary" rightIcon={<ArrowRight />} asChild>
+							<a href="/login">Get Your API Key</a>
 						</Button>
-						<Button size="sm" variant="secondary" leftIcon={<BookOpen />}>
-							Read Docs
+						<Button size="sm" variant="secondary" leftIcon={<BookOpen />} asChild>
+							<a href="https://cohort10-x402-docs.vercel.app/" target="_blank" rel="noopener noreferrer">
+								Read Docs
+							</a>
 						</Button>
 						<Button size="sm" variant="secondary" leftIcon={<Github />} asChild>
 							<a
-								href="https://github.com/raid-guild/cohort10-next-x402-dashboard"
+								href="https://github.com/raid-guild/x402-facilitator-go"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								GitHub
+								View Repo
 							</a>
 						</Button>
 					</div>
 
 					<div className="flex items-center gap-8 pt-4 text-neutral-600 text-sm dark:text-neutral-400">
 						<div>
-							<div className="type-display-sm text-moloch-500">$0.0001</div>
-							<div className="type-label">Per API Call</div>
+							<div className="type-display-sm text-moloch-500">0.1 USDC</div>
+							<div className="type-label">Key Price</div>
 						</div>
 						<div>
-							<div className="type-display-sm text-moloch-500">~100ms</div>
-							<div className="type-label">Payment Latency</div>
+							<div className="type-display-sm text-moloch-500">30 Days</div>
+							<div className="type-label">Key Validity</div>
 						</div>
 						<div>
-							<div className="type-display-sm text-moloch-500">100%</div>
-							<div className="type-label">Open Source</div>
+							<div className="type-display-sm text-moloch-500">Base</div>
+							<div className="type-label">Chain</div>
 						</div>
 					</div>
 				</div>

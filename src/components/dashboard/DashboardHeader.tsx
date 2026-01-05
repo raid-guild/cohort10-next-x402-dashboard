@@ -30,13 +30,29 @@ export default function DashboardHeader({ title, children }: DashboardHeaderProp
             </div>
             <div className="flex items-center gap-4">
                 {children}
-                <Button variant="secondary" size="sm" className=" bg-white border-white border shadow-sm ">
-                   <span> Open docs</span>
-                    <ExternalLink className="h-4.5 w-4.5 ml-3" />
+                <Button variant="secondary" size="sm" className=" bg-white border-white border shadow-sm " asChild>
+                    <a
+                        href="https://cohort10-x402-docs.vercel.app/"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <span> Open docs</span>
+                        <ExternalLink className="h-4.5 w-4.5 ml-3" />
+                    </a>
                 </Button>
-                <Button size="sm" className="gap-2 bg-moloch-800 text-white hover:bg-moloch-500 cursor-pointer">
-                    One-click deploy
-                    <CloudUpload className="h-4 w-4" />
+                <Button
+                    size="sm"
+                    className="gap-2 bg-moloch-800 text-white hover:bg-moloch-500 cursor-pointer"
+                    asChild
+                >
+                    <a
+                        href="https://github.com/raid-guild/x402-facilitator-go"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        One-click deploy
+                        <CloudUpload className="h-4 w-4" />
+                    </a>
                 </Button>
             </div>
         </header>

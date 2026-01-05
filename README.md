@@ -16,6 +16,41 @@ x402 is an emerging standard for autonomous payments on Base and beyond. This da
 
 This is the **Next.js frontend** component of the RaidGuild x402 facilitator stack. The Go server handles actual payment processing, while this frontend provides the hosted service experience, developer onboarding, and admin tools.
 
+## API Keys: Pricing, Expiry, and x402 Dogfooding
+
+API keys are purchased via x402 (no traditional billing) and expire after **30 days**.
+Key generation always requires payment, and a key is only created after a successful `verify` + `settle`.
+
+- **Price per key**: set via `PRICE_IN_USDC` (default target: `0.1`)
+- **Expiry**: enforced via `api_keys.expires_at`
+- **Network**: **Base only** for now (chainId `8453`)
+
+### External Facilitator Integration (Next.js)
+
+This repo uses the hosted `x402-facilitator-go` service to verify and settle **exact (EIP-3009)** payments.
+
+**Env Vars**
+
+- `X402_FACILITATOR_URL=https://cohort-x402-go.vercel.app`
+- `X402_FACILITATOR_API_KEY=cohort-10-rules`
+- `X402_NETWORK=base`
+- `USDC_BASE_ADDRESS=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- `SERVICE_RECIPIENT_ADDRESS=<your receiving address>`
+- `PRICE_IN_USDC=0.1`
+
+**Flow**
+
+1. `POST /api/keys/generate` returns `402` with `paymentRequirements` (exact v2, Base, USDC).
+2. Client signs EIP-712 `TransferWithAuthorization` and retries with `X-402-Payment` header.
+3. Server calls facilitator `POST /verify` then `POST /settle`.
+4. On success, create key and set `expires_at = now + 30 days`.
+
+**Notes**
+
+- `amount` is raw USDC units (6 decimals). `amountDecimal` is optional but helpful for UI.
+- `extra.name` must be `USD Coin` and `extra.version` must be `2` for Base USDC.
+- Use `x402Version: 2` for `eip155:8453`.
+
 ### Architecture
 
 - **Go Backend**: Self-contained facilitator handling x402 payment processing
@@ -162,24 +197,7 @@ This project uses the **RaidGuild brand guidelines** from [brand.raidguild.org](
 
 ### UI Components
 
-42+ production-ready components built on Radix UI primitives:splay-lg mb-8">Welcome to RaidGuild</h1>
-
-<p className="text-body-lg text-muted-foreground mb-8">
-Built with the RaidGuild brand guidelines
-</p>
-
-      <div className="flex items-center space-x-2">
-        <Switch id="example-switch" />
-        <label htmlFor="example-switch" className="text-body-base">
-          Example switch component
-        </label>
-      </div>
-    </div>
-
-);
-}
-
-```
+42+ production-ready components built on Radix UI primitives.
 
 ### 4. Available Typography Classes
 
