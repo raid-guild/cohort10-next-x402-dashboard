@@ -18,6 +18,8 @@ const HERO_IMAGES = [
 ];
 
 export default function HeroSection() {
+	const facilitatorUrl = process.env.NEXT_PUBLIC_FACILITATOR_URL;
+
 	// Calculate current image based on 2-minute intervals
 	const getImageForInterval = useCallback(() => {
 		const interval = Math.floor(Date.now() / (1000 * 60 * 2)); // 2 minutes
@@ -93,6 +95,22 @@ export default function HeroSection() {
 							<div className="type-label">Chain</div>
 						</div>
 					</div>
+
+					{facilitatorUrl && (
+						<div className="mt-6 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+							<span className="type-label text-neutral-500 dark:text-neutral-400">Hosted Facilitator</span>
+							<div className="mt-1 font-mono text-sm text-neutral-900 dark:text-neutral-100">
+								<a
+									href={facilitatorUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="hover:underline"
+								>
+									{facilitatorUrl}
+								</a>
+							</div>
+						</div>
+					)}
 				</div>
 
 				{/* Right Column - Image */}
