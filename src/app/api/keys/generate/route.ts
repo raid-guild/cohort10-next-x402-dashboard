@@ -209,6 +209,7 @@ export async function POST(request: NextRequest) {
         organization_id: organization.id,
         name: name || null,
         key_prefix: keyPrefix,
+        key_plaintext: apiKey.key,
         key_hash: apiKey.hash,
         expires_at: apiKey.expiresAt.toISOString(),
         environment: apiKey.environment,
