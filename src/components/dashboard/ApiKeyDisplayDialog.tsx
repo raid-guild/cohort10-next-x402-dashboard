@@ -19,6 +19,7 @@ export default function ApiKeyDisplayDialog({
 }: ApiKeyDisplayDialogProps) {
   const [isRevealed, setIsRevealed] = useState(false)
   const [copied, setCopied] = useState(false)
+  const facilitatorUrl = process.env.NEXT_PUBLIC_FACILITATOR_URL
 
   const handleCopy = async () => {
     if (apiKey) {
@@ -63,6 +64,22 @@ export default function ApiKeyDisplayDialog({
               )}
             </button>
           </div>
+
+          {facilitatorUrl && (
+            <div className="rounded-md border border-neutral-200 bg-neutral-50 p-3 text-sm text-neutral-700">
+              <p className="mb-1 text-xs uppercase tracking-wide text-neutral-500">
+                Hosted facilitator
+              </p>
+              <a
+                href={facilitatorUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="break-all font-mono text-xs text-neutral-900 hover:underline"
+              >
+                {facilitatorUrl}
+              </a>
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex gap-3 pt-2">
