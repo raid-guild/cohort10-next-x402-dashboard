@@ -1,46 +1,36 @@
-import { CheckCircle2, Code2, Key, Zap } from "lucide-react";
+import { Key, Wallet, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
 const steps = [
 	{
-		icon: Code2,
+		icon: Wallet,
 		step: "01",
-		title: "Wrap Your API",
+		title: "Connect Wallet",
 		description:
-			"Point the facilitator at your existing REST API. No code changes required on your backend.",
-		code: `curl https://facilitator.raidguild.org/api/your-endpoint \\
-  -H "Authorization: Bearer YOUR_KEY"`,
+			"Sign in with Ethereum and link your organization to manage keys and payments.",
+		code: `# Sign in with Ethereum
+GET /login`,
 	},
 	{
 		icon: Key,
 		step: "02",
-		title: "Generate API Keys",
+		title: "Purchase a Key",
 		description:
-			"Use the dashboard to create temporary or permanent API keys. Keys are hashed and never stored in plaintext.",
-		code: `# Create a new API key
-POST /api/keys
-{ "name": "production", "rate": 0.0001 }`,
+			"Pay 0.1 USDC to generate a 30-day API key. The dashboard guides the signature flow.",
+		code: `# Create a new API key (returns 402 if unpaid)
+POST /api/keys/generate
+{ "name": "production" }`,
 	},
 	{
 		icon: Zap,
 		step: "03",
-		title: "Clients Pay Per Call",
+		title: "Send x402 Requests",
 		description:
-			"Clients include payment proof with each request. The facilitator validates and forwards to your API.",
+			"Clients include an X-402-Payment header. The facilitator verifies and settles before forwarding.",
 		code: `# Client request with x402 payment
 curl -X POST https://api.example.com/data \\
-  -H "X-Payment-Proof: 0x..." \\
-  -H "X-Payment-Amount: 0.0001"`,
-	},
-	{
-		icon: CheckCircle2,
-		step: "04",
-		title: "Instant Settlement",
-		description:
-			"Payments settle on-chain in milliseconds. Monitor revenue in real-time through the dashboard.",
-		code: `// Revenue analytics available via API
-GET /api/analytics/revenue?period=daily`,
+  -H "X-402-Payment: { ... }"`,
 	},
 ];
 
@@ -52,7 +42,7 @@ export default function HowItWorksSection() {
 					How It Works
 				</Badge>
 				<h2 className="type-display-md mb-4">
-					From API to revenue in <span className="text-moloch-500">4 steps</span>
+					From wallet to revenue in <span className="text-moloch-500">3 steps</span>
 				</h2>
 				<p className="type-body-lg mx-auto max-w-2xl text-neutral-700 dark:text-neutral-300">
 					Deploy a production-ready payment gateway in minutes. No blockchain expertise required.

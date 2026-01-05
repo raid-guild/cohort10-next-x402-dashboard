@@ -43,6 +43,9 @@ export default function ApiKeysTable({ apiKeys, onGenerate, onRevoke }: ApiKeysT
                             Created
                         </th>
                         <th className="px-6 py-3 text-left type-body-lg font-bold! text-black border-r border-neutral-300">
+                            Expires
+                        </th>
+                        <th className="px-6 py-3 text-left type-body-lg font-bold! text-black border-r border-neutral-300">
                             Status
                         </th>
                         <th className="px-6 py-3 text-left type-body-lg font-bold! text-black">
@@ -69,6 +72,9 @@ export default function ApiKeysTable({ apiKeys, onGenerate, onRevoke }: ApiKeysT
                             </td>
                             <td className="px-6 py-4 type-body-base text-neutral-900 border-r border-neutral-300">
                                 {key.createdBy}
+                            </td>
+                            <td className="px-6 py-4 type-body-base text-neutral-900 border-r border-neutral-300">
+                                {key.expiresBy}
                             </td>
                             <td className="px-6 py-4 border-r border-neutral-300">
                                 <StatusBadge status={key.status} />

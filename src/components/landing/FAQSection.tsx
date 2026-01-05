@@ -20,17 +20,17 @@ const faqs = [
 	{
 		question: "How much does it cost to use?",
 		answer:
-			"The open-source facilitator is free to self-host. RaidGuild's hosted service offers a free tier for testing and development. Production tiers start at $29/month with volume discounts available. You set the per-API-call price your clients pay.",
+			"The open-source facilitator is free to self-host. For hosted access, API keys are a one-time purchase (currently 0.1 USDC per key) and expire after 30 days.",
 	},
 	{
 		question: "What networks are supported?",
 		answer:
-			"Currently optimized for Base L2 with plans to support Optimism, Arbitrum, and other EVM-compatible chains. The protocol is chain-agnostic, so additional networks can be added via configuration.",
+			"Base is supported today. Multi-chain support is on the roadmap once the hosted flow is solid.",
 	},
 	{
 		question: "How do clients pay for API calls?",
 		answer:
-			"Clients include cryptographic payment proofs in request headers. These proofs are validated by the facilitator before forwarding the request. Payments settle on-chain automatically. No manual invoicing or payment collection needed.",
+			"Clients include an X-402-Payment header with a signed authorization. The facilitator verifies and settles on-chain before forwarding the request.",
 	},
 	{
 		question: "Is this production-ready?",

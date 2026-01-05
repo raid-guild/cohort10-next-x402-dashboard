@@ -5,6 +5,7 @@ import type {
   ApiKeyResponse,
   GenerateApiKeyRequest,
   GenerateApiKeyResponse,
+  GenerateApiKeySuccessResponse,
   ListApiKeysResponse,
   RevokeApiKeyRequest,
   RevokeApiKeyResponse,
@@ -23,14 +24,18 @@ export const apiKeysQueryKeys = {
  */
 function formatApiKeyForDisplay(key: ApiKeyResponse): ApiKeyData {
   const createdDate = new Date(key.createdAt)
+  const expiresDate = new Date(key.expiresAt)
   const formattedDate = format(createdDate, 'yyyy-dd-MM')
+  const formattedExpiryDate = format(expiresDate, 'yyyy-dd-MM')
   const relativeTime = formatDistanceToNow(createdDate, { addSuffix: true })
+  const expiresRelative = formatDistanceToNow(expiresDate, { addSuffix: true })
   
   return {
     id: key.id,
     name: key.name,
     keyId: key.masked,
     createdBy: `${formattedDate} · ${relativeTime}`,
+    expiresBy: `${formattedExpiryDate} · ${expiresRelative}`,
     status: key.isExpired ? 'Inactive' : 'Active',
     environment: key.environment,
   }
@@ -56,12 +61,26 @@ async function fetchApiKeys(walletAddress: string): Promise<ApiKeyData[]> {
 async function generateApiKey(
   request: GenerateApiKeyRequest
 ): Promise<GenerateApiKeyResponse> {
+  const { x402Payment, ...payload } = request
   const response = await fetch('/api/keys/generate', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(request),
+    headers: {
+      'Content-Type': 'application/json',
+      ...(x402Payment ? { 'X-402-Payment': JSON.stringify(x402Payment) } : {}),
+    },
+    body: JSON.stringify(payload),
   })
   const data = await response.json()
+
+  if (response.status === 402) {
+    if (x402Payment) {
+      throw new Error(data.error || 'Payment required')
+    }
+    return {
+      requiresPayment: true,
+      paymentRequirements: data.paymentRequirements,
+    }
+  }
 
   if (!response.ok) {
     throw new Error(data.error || 'Failed to generate API key')
@@ -108,11 +127,13 @@ export function useGenerateApiKey() {
 
   return useMutation({
     mutationFn: generateApiKey,
-    onSuccess: (_, variables) => {
-      // Invalidate and refetch API keys list
-      queryClient.invalidateQueries({
-        queryKey: apiKeysQueryKeys.list(variables.walletAddress),
-      })
+    onSuccess: (data, variables) => {
+      const response = data as GenerateApiKeySuccessResponse
+      if (response.success) {
+        queryClient.invalidateQueries({
+          queryKey: apiKeysQueryKeys.list(variables.walletAddress),
+        })
+      }
     },
   })
 }

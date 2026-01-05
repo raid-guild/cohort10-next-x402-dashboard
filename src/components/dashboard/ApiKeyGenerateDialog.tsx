@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
 } from '@/components/ui/dialog'
 import {
   Select,
@@ -30,6 +31,7 @@ export default function ApiKeyGenerateDialog({
 }: ApiKeyGenerateDialogProps) {
   const [environment, setEnvironment] = useState<'live' | 'test'>('live')
   const [keyName, setKeyName] = useState('')
+  const price = process.env.NEXT_PUBLIC_PRICE_IN_USDC || '0.1'
 
   const handleGenerate = async () => {
     await onGenerate({
@@ -47,9 +49,9 @@ export default function ApiKeyGenerateDialog({
         <div className="space-y-4">
           {/* Header */}
           <div>
-            <h2 className="text-2xl font-serif font-normal text-neutral-900 mb-1">
+            <DialogTitle className="text-2xl font-serif font-normal text-neutral-900 mb-1">
               Generate API Key
-            </h2>
+            </DialogTitle>
             <p className="text-sm text-neutral-600">
               create a new API key for your organization.
             </p>
@@ -57,6 +59,13 @@ export default function ApiKeyGenerateDialog({
 
           {/* Form Fields */}
           <div className="space-y-4">
+            <div className="rounded-md border border-neutral-200 bg-neutral-50 p-3 text-sm text-neutral-700">
+              <p>
+                Generating a key requires a one-time payment of {price} USDC on Base.
+                You will be prompted by MetaMask to sign an authorization, then the
+                key will be created and active for 30 days.
+              </p>
+            </div>
             <div className="space-y-2">
               <Label htmlFor="key-name" className="text-sm text-neutral-700">
                 Key Name (Optional)
