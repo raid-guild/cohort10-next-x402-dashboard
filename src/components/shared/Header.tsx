@@ -16,6 +16,7 @@ import {
 } from "react";
 import HeaderNavLinks, { type HeaderNavLink, type HeaderNavLinksProps } from "./NavLinks";
 import AuthButton from "@/components/auth/AuthButton";
+import { docsUrl } from "@/config";
 
 type HeaderTheme = "moloch-500" | "moloch-800" | "scroll-700";
 
@@ -49,7 +50,7 @@ const NAV_ITEMS: NavItem[] = [
 	{ label: "Dashboard", href: "/dashboard" },
 	{
 		label: "Docs",
-		href: "https://github.com/raid-guild/x402-facilitator-go",
+		href: docsUrl,
 		isExternal: true,
 	},
 	{

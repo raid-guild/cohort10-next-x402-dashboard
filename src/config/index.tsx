@@ -11,6 +11,9 @@ if (!projectId) {
 
 export const networks = [mainnet, base]
 
+// Shared application URLs
+export const docsUrl = process.env.NEXT_PUBLIC_DOCS_URL ?? 'https://cohort10-x402-docs.vercel.app/'
+
 // Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({
     storage: createStorage({

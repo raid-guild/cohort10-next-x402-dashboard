@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { docsUrl } from "@/config";
 
 const HERO_IMAGES = [
 	"/assets/webp/1440x1440/warriors-magic-c.webp",
@@ -66,7 +67,7 @@ export default function HeroSection() {
 							<a href="/login">Get Your API Key</a>
 						</Button>
 						<Button size="sm" variant="secondary" leftIcon={<BookOpen />} asChild>
-							<a href="https://cohort10-x402-docs.vercel.app/" target="_blank" rel="noopener noreferrer">
+							<a href={docsUrl} target="_blank" rel="noopener noreferrer">
 								Read Docs
 							</a>
 						</Button>
@@ -94,6 +95,21 @@ export default function HeroSection() {
 							<div className="type-display-sm text-moloch-500">Base</div>
 							<div className="type-label">Chain</div>
 						</div>
+						{facilitatorUrl && (
+							<div className="max-w-xs">
+								<div className="type-display-sm text-moloch-500 truncate">
+									<a
+										href={facilitatorUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="hover:underline"
+									>
+										{facilitatorUrl}
+									</a>
+								</div>
+								<div className="type-label">Facilitator URL</div>
+							</div>
+						)}
 					</div>
 
 					{facilitatorUrl && (
