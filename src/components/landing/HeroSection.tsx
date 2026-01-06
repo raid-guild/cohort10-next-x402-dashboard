@@ -95,21 +95,6 @@ export default function HeroSection() {
 							<div className="type-display-sm text-moloch-500">Base</div>
 							<div className="type-label">Chain</div>
 						</div>
-						{facilitatorUrl && (
-							<div className="max-w-xs">
-								<div className="type-display-sm text-moloch-500 truncate">
-									<a
-										href={facilitatorUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="hover:underline"
-									>
-										{facilitatorUrl}
-									</a>
-								</div>
-								<div className="type-label">Facilitator URL</div>
-							</div>
-						)}
 					</div>
 
 					{facilitatorUrl && (
