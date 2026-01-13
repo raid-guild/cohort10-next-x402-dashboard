@@ -1,7 +1,7 @@
 import { CloudUpload, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const DONATE_URL = "https://x402-donate.vercel.app/";
+const DONATE_BASE_URL = "https://x402-donate.vercel.app";
 const ONE_CLICK_DEPLOY_URL = "https://github.com/raid-guild/x402-facilitator-go";
 
 export default function DeployPage() {
@@ -48,7 +48,10 @@ export default function DeployPage() {
             asChild
           >
             <a
-              href={DONATE_URL}
+              href={(() => {
+                const recipient = process.env.NEXT_PUBLIC_SERVICE_RECIPIENT_ADDRESS;
+                return recipient ? `${DONATE_BASE_URL}/donate/${recipient}` : DONATE_BASE_URL;
+              })()}
               target="_blank"
               rel="noopener noreferrer"
             >

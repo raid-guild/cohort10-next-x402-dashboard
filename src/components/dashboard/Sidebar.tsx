@@ -175,7 +175,16 @@ export default function Sidebar() {
                             className=" bg-[#2D1810] hover:bg-[#3D2418] text-white text-sm font-normal rounded-lg  shadow-sm"
                             asChild
                         >
-                            <a href="https://x402-donate.vercel.app/" target="_blank" rel="noopener noreferrer" className='text-base! type-body-base! lowercase! font-normal!'>
+                            <a
+                                href={(() => {
+                                    const recipient = process.env.NEXT_PUBLIC_SERVICE_RECIPIENT_ADDRESS
+                                    const baseUrl = 'https://x402-donate.vercel.app'
+                                    return recipient ? `${baseUrl}/donate/${recipient}` : baseUrl
+                                })()}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className='text-base! type-body-base! lowercase! font-normal!'
+                            >
                                 Buy us a coffee
                             </a>
                         </Button>

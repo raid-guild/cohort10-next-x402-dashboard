@@ -20,6 +20,7 @@ const HERO_IMAGES = [
 
 export default function HeroSection() {
 	const facilitatorUrl = process.env.NEXT_PUBLIC_FACILITATOR_URL;
+	const keyPrice = process.env.NEXT_PUBLIC_PRICE_IN_USDC;
 
 	// Calculate current image based on 2-minute intervals
 	const getImageForInterval = useCallback(() => {
@@ -84,7 +85,9 @@ export default function HeroSection() {
 
 					<div className="flex items-center gap-8 pt-4 text-neutral-600 text-sm dark:text-neutral-400">
 						<div>
-							<div className="type-display-sm text-moloch-500">5 USDC</div>
+							<div className="type-display-sm text-moloch-500">
+								{keyPrice ? `${keyPrice} USDC` : "0.1 USDC"}
+							</div>
 							<div className="type-label">Key Price</div>
 						</div>
 						<div>
