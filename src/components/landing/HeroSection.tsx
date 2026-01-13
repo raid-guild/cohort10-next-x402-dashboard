@@ -84,7 +84,7 @@ export default function HeroSection() {
 
 					<div className="flex items-center gap-8 pt-4 text-neutral-600 text-sm dark:text-neutral-400">
 						<div>
-							<div className="type-display-sm text-moloch-500">0.1 USDC</div>
+							<div className="type-display-sm text-moloch-500">5 USDC</div>
 							<div className="type-label">Key Price</div>
 						</div>
 						<div>
