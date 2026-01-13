@@ -47,7 +47,7 @@ type NavItem = NavItemWithHref | NavItemWithAnchor;
 
 const NAV_ITEMS: NavItem[] = [
 	{ label: "Home", href: "/" },
-	{ label: "Dashboard", href: "/dashboard" },
+	{ label: "Deploy", href: "/deploy" },
 	{
 		label: "Docs",
 		href: docsUrl,
