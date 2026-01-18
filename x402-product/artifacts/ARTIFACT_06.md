@@ -1,5 +1,14 @@
 # Infrastructure Cost Analysis
 
+- **Status**: DRAFT
+- **Author(s)**: Ryan (@ryanchristo)
+- **Editor(s)**: NA
+- **Date (ceated)**: 2026-01-14
+- **Date (updated)**: NA
+- **Sprint**: Cohort 11
+
+## Description
+
 Comprehensive cost analysis for hosting infrastructure including Vercel (facilitator dashboard, facilitator service, and documentation) and Supabase subscriptions (database, authentication, and storage services).
 
 ## Table of Contents
