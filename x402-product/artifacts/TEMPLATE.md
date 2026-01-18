@@ -1,24 +1,23 @@
 # Artifact Title
 
-- **Status**: DRAFT | COMPLETE
 - **Author(s)**: name (@username)
 - **Editor(s)**: name (@username)
-- **Date (ceated)**: YYYY-MM-DD
+- **Date (created)**: YYYY-MM-DD
 - **Date (updated)**: YYYY-MM-DD
-- **Sprint**: [x402 Product Sprint #X](#)
+- **Sprint**: [x402 Product Sprint X](#)
 
-## Description
+## Short Description
 
 ...
 
 ## Table of Contents
 
-- [Summary](#summary)
+- [Executive Summary](#executive-summary)
 - [...](#)
-- [Takeaways](#takeaways)
+- [Recommendations](#recommendations)
 - [References](#references)
 
-## Summary
+## Executive Summary
 
 ...
 
@@ -26,7 +25,7 @@
 
 ...
 
-## Takeaways
+## Recommendations
 
 ...
 

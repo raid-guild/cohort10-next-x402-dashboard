@@ -1,26 +1,23 @@
 # x402 Hackathon Feedback
 
-> *TODO: Collect and analyze feedback from the upcoming hackathon to inform product improvements and identify cross-promotion opportunities.*
-
-- **Status**: DRAFT | COMPLETE
 - **Author(s)**: name (@username)
 - **Editor(s)**: name (@username)
-- **Date (ceated)**: YYYY-MM-DD
+- **Date (created)**: YYYY-MM-DD
 - **Date (updated)**: YYYY-MM-DD
 - **Sprint**: Cohort 11
 
-## Description
+## Short Description
 
-...
+Summarizes the work completed for the x402 Hackathon, the feedback received from the hackathon judges, and identifies areas for improvement.
 
 ## Table of Contents
 
-- [Summary](#summary)
+- [Executive Summary](#executive-summary)
 - [...](#)
-- [Takeaways](#takeaways)
+- [Recommendations](#recommendations)
 - [References](#references)
 
-## Summary
+## Executive Summary
 
 ...
 
@@ -28,7 +25,7 @@
 
 ...
 
-## Takeaways
+## Recommendations
 
 ...
 
