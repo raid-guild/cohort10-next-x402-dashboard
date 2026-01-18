@@ -18,21 +18,21 @@ Use **[TEMPLATE](./TEMPLATE.md)** as the starting point for new research artifac
 
 1. **[ARTIFACT_01](./ARTIFACT_01.md)** - x402 Hackathon Feedback
 
-   Summarizes the work completed for the x402 Hackathon, the feedback received from the hackathon judges, and identifies areas for improvement.
+   > *TODO: Add a short description of the artifact (and update title if necessary)*
 
 2. **[ARTIFACT_02](./ARTIFACT_02.md)** - Facilitator Market Research
 
-   Includes market research on existing facilitator solutions, includes pricing models, usage metrics, and feature sets.
+   > *TODO: Add a short description of the artifact (and update title if necessary)*
 
 3. **[ARTIFACT_03](./ARTIFACT_03.md)** - Cost Structure & Rate Limiting Strategy
 
    > *TODO: Add a short description of the artifact (and update title if necessary)*
 
-4. **[ARTIFACT_04](./ARTIFACT_04.md)** - White-Label Product Feasibility
+4. **[ARTIFACT_04](./ARTIFACT_04.md)** - Multi-Network Deployment Analysis
 
    > *TODO: Add a short description of the artifact (and update title if necessary)*
 
-5. **[ARTIFACT_05](./ARTIFACT_05.md)** - Multi-Network Deployment Analysis
+5. **[ARTIFACT_05](./ARTIFACT_05.md)** - White-Label Product Feasibility
 
    > *TODO: Add a short description of the artifact (and update title if necessary)*
 

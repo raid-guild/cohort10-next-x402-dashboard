@@ -1,5 +1,7 @@
 # Facilitator Market Research
 
+> *TODO: Conduct market research on existing facilitator solutions, including pricing models, usage metrics, and feature sets.*
+
 - **Author(s)**: name (@username)
 - **Editor(s)**: name (@username)
 - **Date (created)**: YYYY-MM-DD
@@ -8,7 +10,7 @@
 
 ## Short Description
 
-Includes market research on existing facilitator solutions, includes pricing models, usage metrics, and feature sets.
+...
 
 ## Table of Contents
 
